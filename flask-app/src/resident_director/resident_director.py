@@ -1,9 +1,56 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
 
 resident_director = Blueprint('resident_director', __name__)
+ # Adds a new resident to the system 
+@resident_director.route('/resident', methods=['POST'])
+def add_new_resident():
+    #access json data from request object
+    current_app.logger.info('Processing form data')
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
+
+    res_id = req_data['student_id']
+    res_rd = req_data['rd_id']
+    res_ra = req_data['ra_id']
+    res_email = req_data['email']
+    res_year = req_data['year']
+    res_semester = req_data['semester']
+    res_last = req_data['last_name']
+    res_middle = req_data['middle_name']
+    res_first = req_data['first_name']
+    res_floor = req_data['floor']
+    res_building = req_data['building_number']
+    res_room = req_data['room_number']
+    res_phone = req_data['phone_number']
+    res_add = req_data['perm_address']
+
+    #construct the insert statement 
+    query = 'INSERT INTO Residents(student_id, rd_id, ra_id, email, year, semester, last_name, middle_name, first_name, floor, building_number, room_number, phone_number, perm_address) VALUES ('
+    query += str(res_id) + ', '
+    query += str(res_rd) + ', '
+    query += str(res_ra) + ', "'
+    query += res_email + '", '
+    query += str(res_year) + ', "'
+    query += res_semester + '", "'
+    query += res_last + '", "'
+    query += res_middle + '", "'
+    query += res_first + '", '
+    query += str(res_floor) + ', '
+    query += str(res_building) + ', '
+    query += str(res_room) + ', "'
+    query += res_phone + '", "'
+    query += res_add + '")'
+
+    current_app.logger.info(query)
+
+    #execute the query 
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+    return "Success"
 
 # Get all the products from the database
 # @resident_director.route('/resident_director', methods=['GET'])
