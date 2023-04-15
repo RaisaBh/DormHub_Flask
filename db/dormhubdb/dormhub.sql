@@ -1,10 +1,12 @@
+-- Fix the start_time and end_time
 CREATE TABLE WeeklySchedule(
    days_on_shift DATE  NOT NULL PRIMARY KEY
   ,start_time    VARCHAR(8) NOT NULL
   ,end_time      VARCHAR(8) NOT NULL
   ,ra_id         INTEGER  NOT NULL
+  PRIMARY KEY (ra_id)
 );
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('1/24/2023','8:04 PM','8:43 AM',1);
+INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('1/24/2023', '8:04 PM','8:43 AM',1);
 INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('1/14/2023','11:23 AM','10:41 AM',2);
 INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('3/11/2023','12:43 AM','3:37 PM',3);
 INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('11/24/2022','10:43 PM','5:43 PM',4);
@@ -26,8 +28,11 @@ INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/
 INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/20/2023','8:32 AM','4:16 PM',20);
 
 CREATE TABLE Attend(
-   student_id INTEGER  NOT NULL PRIMARY KEY 
+   student_id INTEGER  NOT NULL 
   ,event_id   INTEGER  NOT NULL
+  PRIMARY KEY (student_id, ra_id),
+  FOREIGN KEY (student_id) REFERENCES Residents (student_id),
+  FOREIGN KEY (ra_id) REFERENCES Events (ra_id)
 );
 INSERT INTO Attend(student_id,event_id) VALUES (1,13);
 INSERT INTO Attend(student_id,event_id) VALUES (2,6);
@@ -55,6 +60,8 @@ CREATE TABLE Calendar(
   ,date       DATE  NOT NULL
   ,event      VARCHAR(413) NOT NULL
   ,student_id INTEGER  NOT NULL
+  PRIMARY KEY (student_id),
+  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
 INSERT INTO Calendar(location,date,event,student_id) VALUES ('604 Buhler Avenue','9/19/2022','Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.',20);
 INSERT INTO Calendar(location,date,event,student_id) VALUES ('763 Arrowood Drive','12/25/2022','Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit.',20);
@@ -81,6 +88,7 @@ INSERT INTO Calendar(location,date,event,student_id) VALUES ('4593 Forster Road'
 CREATE TABLE CalendarParticipants(
    student_id   INTEGER  NOT NULL PRIMARY KEY 
   ,participants VARCHAR(451) NOT NULL
+  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
 INSERT INTO CalendarParticipants(student_id,participants) VALUES (9,'Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.');
 INSERT INTO CalendarParticipants(student_id,participants) VALUES (5,'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.');
@@ -108,6 +116,8 @@ CREATE TABLE Chores(
   ,deadline     DATE  NOT NULL
   ,day_assigned DATE  NOT NULL
   ,student_id   INTEGER  NOT NULL
+  PRIMARY KEY (student_id),
+  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
 INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('elementum ligula vehicula consequat morbi a','4/12/2023','3/5/2023',17);
 INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('pellentesque at nulla suspendisse potenti cras','4/11/2023','10/29/2022',16);
@@ -162,8 +172,10 @@ INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALU
 
 
 ​​CREATE TABLE EventParticipants(
-   event_id     INTEGER  NOT NULL PRIMARY KEY 
+   event_id     INTEGER  NOT NULL 
   ,participants VARCHAR(389) NOT NULL
+  PRIMARY KEY (event_id participants),
+  FOREIGN KEY (event_id) REFERENCES Events (event_id)
 );
 INSERT INTO EventParticipants(event_id,participants) VALUES (19,'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.');
 INSERT INTO EventParticipants(event_id,participants) VALUES (9,'Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo.');
@@ -188,11 +200,13 @@ INSERT INTO EventParticipants(event_id,participants) VALUES (7,'Vestibulum sed m
 
 
 CREATE TABLE SpotifyPlaylist(
-   student_id INTEGER  NOT NULL PRIMARY KEY 
+   student_id INTEGER  NOT NULL 
   ,artist     VARCHAR(18) NOT NULL
   ,album      VARCHAR(10) NOT NULL
   ,genre      VARCHAR(31) NOT NULL
   ,song       VARCHAR(11) NOT NULL
+  PRIMARY KEY (student_id),
+  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
 INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (8,'Reade Yesinov','montes','Crime|Mystery|Thriller','erat');
 INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (13,'Sean Masedon','justo','Drama','in');
