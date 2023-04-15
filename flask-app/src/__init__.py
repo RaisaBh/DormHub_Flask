@@ -36,7 +36,7 @@ def create_app():
 
     # Register the routes that we just imported so they can be properly handled
     app.register_blueprint(views,       url_prefix='/v')
-    app.register_blueprint(customers,   url_prefix='/c')
-    app.register_blueprint(products,    url_prefix='/p')
+    app.register_blueprint(residents,   url_prefix='/r')
+    app.register_blueprint(resident_director,    url_prefix='/rd')
 
     return app
