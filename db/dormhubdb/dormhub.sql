@@ -1,210 +1,241 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+DROP SCHEMA IF EXISTS `dormhub` ;
+CREATE SCHEMA IF NOT EXISTS `dormhub` DEFAULT CHARACTER SET latin1 ;
+USE `dormhub` ;
+
+
 -- Fix the start_time and end_time
-CREATE TABLE WeeklySchedule(
-   days_on_shift DATE  NOT NULL PRIMARY KEY
-  ,start_time    VARCHAR(8) NOT NULL
-  ,end_time      VARCHAR(8) NOT NULL
-  ,ra_id         INTEGER  NOT NULL
-  PRIMARY KEY (ra_id)
-);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('1/24/2023', '8:04 PM','8:43 AM',1);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('1/14/2023','11:23 AM','10:41 AM',2);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('3/11/2023','12:43 AM','3:37 PM',3);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('11/24/2022','10:43 PM','5:43 PM',4);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('12/18/2022','9:43 AM','9:39 AM',5);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/9/2022','10:31 PM','6:11 PM',6);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('3/14/2023','3:36 AM','11:19 AM',7);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/9/2023','7:29 PM','4:11 AM',8);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('12/11/2022','6:22 PM','2:46 PM',9);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('4/10/2023','4:59 AM','9:06 PM',10);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('12/29/2022','7:26 PM','7:08 PM',11);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/9/2022','2:11 PM','1:57 AM',12);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('4/8/2023','10:02 AM','4:20 AM',13);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/4/2023','10:11 PM','3:04 PM',14);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/28/2023','8:10 PM','12:00 AM',15);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/30/2022','7:14 AM','1:43 AM',16);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('4/25/2023','9:25 AM','5:56 AM',17);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('11/9/2022','11:16 AM','7:12 AM',18);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/2/2022','10:25 PM','5:29 AM',19);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/20/2023','8:32 AM','4:16 PM',20);
+CREATE TABLE IF NOT EXISTS `dormhub`.`WeeklySchedule`(
+  `days_on_shift` DATE  NOT NULL, 
+  `start_time`    VARCHAR(8) NOT NULL,
+  `end_time`      VARCHAR(8) NOT NULL,
+  `ra_id`         INTEGER  NOT NULL,
+  PRIMARY KEY (`ra_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE Attend(
-   student_id INTEGER  NOT NULL 
-  ,event_id   INTEGER  NOT NULL
-  PRIMARY KEY (student_id, ra_id),
-  FOREIGN KEY (student_id) REFERENCES Residents (student_id),
-  FOREIGN KEY (ra_id) REFERENCES Events (ra_id)
-);
-INSERT INTO Attend(student_id,event_id) VALUES (1,13);
-INSERT INTO Attend(student_id,event_id) VALUES (2,6);
-INSERT INTO Attend(student_id,event_id) VALUES (3,9);
-INSERT INTO Attend(student_id,event_id) VALUES (4,3);
-INSERT INTO Attend(student_id,event_id) VALUES (5,8);
-INSERT INTO Attend(student_id,event_id) VALUES (6,9);
-INSERT INTO Attend(student_id,event_id) VALUES (7,13);
-INSERT INTO Attend(student_id,event_id) VALUES (8,14);
-INSERT INTO Attend(student_id,event_id) VALUES (9,7);
-INSERT INTO Attend(student_id,event_id) VALUES (10,13);
-INSERT INTO Attend(student_id,event_id) VALUES (11,16);
-INSERT INTO Attend(student_id,event_id) VALUES (12,19);
-INSERT INTO Attend(student_id,event_id) VALUES (13,10);
-INSERT INTO Attend(student_id,event_id) VALUES (14,12);
-INSERT INTO Attend(student_id,event_id) VALUES (15,2);
-INSERT INTO Attend(student_id,event_id) VALUES (16,7);
-INSERT INTO Attend(student_id,event_id) VALUES (17,2);
-INSERT INTO Attend(student_id,event_id) VALUES (18,6);
-INSERT INTO Attend(student_id,event_id) VALUES (19,11);
-INSERT INTO Attend(student_id,event_id) VALUES (20,4);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('1/24/2023', '8:04 PM','8:43 AM',1);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('1/14/2023','11:23 AM','10:41 AM',2);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('3/11/2023','12:43 AM','3:37 PM',3);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('11/24/2022','10:43 PM','5:43 PM',4);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('12/18/2022','9:43 AM','9:39 AM',5);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('10/9/2022','10:31 PM','6:11 PM',6);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('3/14/2023','3:36 AM','11:19 AM',7);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('2/9/2023','7:29 PM','4:11 AM',8);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('12/11/2022','6:22 PM','2:46 PM',9);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('4/10/2023','4:59 AM','9:06 PM',10);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('12/29/2022','7:26 PM','7:08 PM',11);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('10/9/2022','2:11 PM','1:57 AM',12);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('4/8/2023','10:02 AM','4:20 AM',13);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('2/4/2023','10:11 PM','3:04 PM',14);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('2/28/2023','8:10 PM','12:00 AM',15);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('10/30/2022','7:14 AM','1:43 AM',16);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('4/25/2023','9:25 AM','5:56 AM',17);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('11/9/2022','11:16 AM','7:12 AM',18);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('10/2/2022','10:25 PM','5:29 AM',19);
+INSERT INTO `WeeklySchedule`(`days_on_shift`, `start_time`, `end_time`, `ra_id`) VALUES ('2/20/2023','8:32 AM','4:16 PM',20);
 
-CREATE TABLE Calendar(
-   location   VARCHAR(25) NOT NULL PRIMARY KEY
-  ,date       DATE  NOT NULL
-  ,event      VARCHAR(413) NOT NULL
-  ,student_id INTEGER  NOT NULL
-  PRIMARY KEY (student_id),
-  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
-);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('604 Buhler Avenue','9/19/2022','Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.',20);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('763 Arrowood Drive','12/25/2022','Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit.',20);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('3 Dapin Point','1/24/2023','Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue.',14);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('9 Stang Avenue','9/14/2022','Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',18);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('06020 Rowland Drive','10/23/2022','Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',20);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('985 Lawn Center','11/25/2022','Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.',15);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('26148 1st Way','1/17/2023','Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.',15);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('0 Lighthouse Bay Junction','10/26/2022','Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.',6);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('2492 Banding Pass','11/10/2022','Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.',12);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('5336 Dorton Pass','2/26/2023','Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.',12);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('71761 Talmadge Lane','10/11/2022','Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.',20);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('0367 Holmberg Lane','10/18/2022','Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla.',10);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('88 Shelley Road','3/25/2023','Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.',10);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('49 Spenser Street','9/24/2022','Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.',10);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('12975 Fordem Avenue','9/25/2022','Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.',16);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('52323 Dapin Court','10/25/2022','Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.',11);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('609 Buell Court','1/16/2023','Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia.',7);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('895 Mandrake Alley','3/6/2023','Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt.',16);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('99189 Surrey Point','11/3/2022','Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus.',4);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('4593 Forster Road','11/12/2022','Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim.',11);
+CREATE TABLE IF NOT EXISTS `dormhub`.`Attend`(
+  `student_id` INTEGER  NOT NULL, 
+  `event_id`   INTEGER  NOT NULL,
+  PRIMARY KEY (`student_id`),
+  FOREIGN KEY (`student_id`) REFERENCES `dormhub`.`Residents` (`student_id`),
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (1,13);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (2,6);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (3,9);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (4,3);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (5,8);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (6,9);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (7,13);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (8,14);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (9,7);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (10,13);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (11,16);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (12,19);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (13,10);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (14,12);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (15,2);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (16,7);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (17,2);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (18,6);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (19,11);
+INSERT INTO `Attend`(`student_id`, `event_id`) VALUES (20,4);
 
-CREATE TABLE CalendarParticipants(
-   student_id   INTEGER  NOT NULL PRIMARY KEY 
-  ,participants VARCHAR(451) NOT NULL
-  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
-);
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (9,'Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (5,'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (15,'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (14,'Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (19,'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (6,'Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (19,'Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (9,'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (16,'Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (7,'Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (12,'Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (18,'Mauris sit amet eros.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (7,'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (18,'Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (17,'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (17,'Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (1,'Fusce posuere felis sed lacus.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (19,'Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (6,'Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.');
-INSERT INTO CalendarParticipants(student_id,participants) VALUES (6,'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus.');
+CREATE TABLE IF NOT EXISTS `dormhub`.`Calendar`(
+  `location`   VARCHAR(25) NOT NULL,
+  `date`       DATE  NOT NULL,
+  `event`      VARCHAR(413) NOT NULL,
+  `student_id` INTEGER  NOT NULL,
+  PRIMARY KEY (`student_id`),
+  FOREIGN KEY (`student_id`) REFERENCES `dormhub`.`Residents` (`student_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE Chores(
-   name         VARCHAR(71) NOT NULL PRIMARY KEY
-  ,deadline     DATE  NOT NULL
-  ,day_assigned DATE  NOT NULL
-  ,student_id   INTEGER  NOT NULL
-  PRIMARY KEY (student_id),
-  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
-);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('elementum ligula vehicula consequat morbi a','4/12/2023','3/5/2023',17);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('pellentesque at nulla suspendisse potenti cras','4/11/2023','10/29/2022',16);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('felis fusce posuere','11/27/2022','1/20/2023',13);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('eros vestibulum ac est lacinia nisi venenatis','9/13/2022','1/8/2023',12);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('vehicula consequat morbi a','1/15/2023','1/12/2023',1);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('magna vulputate luctus cum sociis natoque penatibus et','1/8/2023','4/11/2023',17);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean','4/1/2023','1/29/2023',5);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('pellentesque quisque','2/16/2023','10/19/2022',7);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('turpis eget','2/25/2023','3/8/2023',11);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('in faucibus orci luctus et ultrices posuere','4/22/2023','11/5/2022',9);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('cubilia curae nulla dapibus dolor vel est','9/25/2022','2/16/2023',8);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('commodo vulputate justo in blandit','12/10/2022','2/27/2023',12);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('libero convallis eget','3/15/2023','9/16/2022',6);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('consequat varius integer ac','2/5/2023','3/22/2023',4);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent','4/14/2023','10/20/2022',14);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('cursus vestibulum proin eu mi nulla','10/11/2022','2/14/2023',3);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('felis sed interdum venenatis turpis enim blandit','10/17/2022','2/19/2023',8);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('enim lorem ipsum dolor sit amet consectetuer adipiscing elit','9/8/2022','10/10/2022',13);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('libero ut massa volutpat convallis morbi odio odio elementum eu','10/30/2022','2/1/2023',11);
-INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('arcu adipiscing molestie hendrerit at vulputate','2/12/2023','11/5/2022',20);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('604 Buhler Avenue','9/19/2022','Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.',20);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('763 Arrowood Drive','12/25/2022','Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit.',20);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('3 Dapin Point','1/24/2023','Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue.',14);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('9 Stang Avenue','9/14/2022','Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',18);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('06020 Rowland Drive','10/23/2022','Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',20);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('985 Lawn Center','11/25/2022','Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.',15);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('26148 1st Way','1/17/2023','Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.',15);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('0 Lighthouse Bay Junction','10/26/2022','Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.',6);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('2492 Banding Pass','11/10/2022','Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.',12);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('5336 Dorton Pass','2/26/2023','Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.',12);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('71761 Talmadge Lane','10/11/2022','Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.',20);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('0367 Holmberg Lane','10/18/2022','Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla.',10);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('88 Shelley Road','3/25/2023','Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.',10);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('49 Spenser Street','9/24/2022','Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.',10);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('12975 Fordem Avenue','9/25/2022','Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.',16);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('52323 Dapin Court','10/25/2022','Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.',11);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('609 Buell Court','1/16/2023','Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia.',7);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('895 Mandrake Alley','3/6/2023','Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt.',16);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('99189 Surrey Point','11/3/2022','Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus.',4);
+INSERT INTO `Calendar`(`location`, `date`, `event`, `student_id`) VALUES ('4593 Forster Road','11/12/2022','Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim.',11);
 
 
-CREATE TABLE Events(
-   event_id    INTEGER  NOT NULL PRIMARY KEY 
-  ,date        DATE  NOT NULL
-  ,location    VARCHAR(12) NOT NULL
-  ,last_name   VARCHAR(9) NOT NULL
-  ,middle_name VARCHAR(9) NOT NULL
-  ,first_name  VARCHAR(8) NOT NULL
-);
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (1,'10/8/2022','Suite 39','Sannes','Erna','Yvor');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (2,'5/10/2022','Room 105','Cromarty','Sterne','Maye');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (3,'5/26/2022','PO Box 43283','Pletts','Chilton','Ermina');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (4,'4/12/2023','4th Floor','Vaulkhard','Rachel','Tisha');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (5,'4/18/2022','Room 1076','Campaigne','Beverly','Ricky');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (6,'10/18/2022','Apt 580','Josef','Del','Beverlie');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (7,'11/20/2022','Suite 96','Normand','Gian','Willow');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (8,'6/9/2022','Apt 1392','O''Riordan','Clint','Timmie');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (9,'11/2/2022','Apt 403','Canham','Eran','Danica');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (10,'3/8/2023','Room 1186','Sharman','Zonnya','Derek');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (11,'6/4/2022','11th Floor','Garrals','Erick','Alene');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (12,'2/23/2023','Room 1140','Treweke','Lishe','Tom');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (13,'2/14/2023','Apt 480','Flexman','Finn','Drucill');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (14,'10/22/2022','13th Floor','Petren','Florencia','Lucia');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (15,'4/28/2022','9th Floor','Blackater','Roderick','Caddric');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (16,'5/13/2022','Room 379','Samworth','Woody','Urbano');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (17,'12/25/2022','Suite 58','Horney','Hermina','Adair');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (18,'7/6/2022','6th Floor','Roth','Colas','Roxine');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (19,'9/26/2022','Apt 820','Pressland','Amalia','Hobie');
-INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (20,'8/27/2022','PO Box 69545','Seif','Brock','Robers');
+CREATE TABLE IF NOT EXISTS `dormhub`.`CalendarParticipants`(
+  `student_id`   INTEGER  NOT NULL,
+  `participants` VARCHAR(451) NOT NULL,
+  PRIMARY KEY (`student_id`, `participants`)
+  FOREIGN KEY (`student_id`) REFERENCES `dormhub`.`Residents` (`student_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (9,'Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (5,'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (15,'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (14,'Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (19,'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (6,'Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (19,'Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (9,'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (16,'Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (7,'Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (12,'Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (18,'Mauris sit amet eros.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (7,'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (18,'Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (17,'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (17,'Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (1,'Fusce posuere felis sed lacus.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (19,'Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (6,'Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.');
+INSERT INTO `CalendarParticipants`(`student_id`, `participants`) VALUES (6,'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus.');
+
+CREATE TABLE IF NOT EXISTS `dormhub`.`Chores`(
+  `name`         VARCHAR(71) NOT NULL, 
+  `deadline`     DATE  NOT NULL,
+  `day_assigned` DATE  NOT NULL,
+  `student_id`   INTEGER  NOT NULL,
+  PRIMARY KEY (`student_id`),
+  FOREIGN KEY (`student_id`) REFERENCES `dormhub`.`Residents` (`student_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('elementum ligula vehicula consequat morbi a','4/12/2023','3/5/2023',17);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('pellentesque at nulla suspendisse potenti cras','4/11/2023','10/29/2022',16);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('felis fusce posuere','11/27/2022','1/20/2023',13);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('eros vestibulum ac est lacinia nisi venenatis','9/13/2022','1/8/2023',12);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('vehicula consequat morbi a','1/15/2023','1/12/2023',1);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('magna vulputate luctus cum sociis natoque penatibus et','1/8/2023','4/11/2023',17);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean','4/1/2023','1/29/2023',5);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('pellentesque quisque','2/16/2023','10/19/2022',7);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('turpis eget','2/25/2023','3/8/2023',11);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('in faucibus orci luctus et ultrices posuere','4/22/2023','11/5/2022',9);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('cubilia curae nulla dapibus dolor vel est','9/25/2022','2/16/2023',8);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('commodo vulputate justo in blandit','12/10/2022','2/27/2023',12);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('libero convallis eget','3/15/2023','9/16/2022',6);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('consequat varius integer ac','2/5/2023','3/22/2023',4);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent','4/14/2023','10/20/2022',14);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('cursus vestibulum proin eu mi nulla','10/11/2022','2/14/2023',3);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('felis sed interdum venenatis turpis enim blandit','10/17/2022','2/19/2023',8);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('enim lorem ipsum dolor sit amet consectetuer adipiscing elit','9/8/2022','10/10/2022',13);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('libero ut massa volutpat convallis morbi odio odio elementum eu','10/30/2022','2/1/2023',11);
+INSERT INTO `Chores`(`name`, `deadline`, `day_assigned`, `student_id`) VALUES ('arcu adipiscing molestie hendrerit at vulputate','2/12/2023','11/5/2022',20);
 
 
-​​CREATE TABLE EventParticipants(
-   event_id     INTEGER  NOT NULL 
-  ,participants VARCHAR(389) NOT NULL
-  PRIMARY KEY (event_id participants),
-  FOREIGN KEY (event_id) REFERENCES Events (event_id)
-);
-INSERT INTO EventParticipants(event_id,participants) VALUES (19,'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (9,'Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (3,'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (12,'Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (19,'Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (16,'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (6,'Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (7,'Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (4,'Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (14,'Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (4,'Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (13,'Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (6,'Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (14,'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (2,'Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (8,'Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (6,'Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (11,'Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (19,'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi.');
-INSERT INTO EventParticipants(event_id,participants) VALUES (7,'Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.');
+CREATE TABLE IF NOT EXISTS `dormhub`.`Events`(
+  `event_id`    INTEGER  NOT NULL,
+  `date`        DATE  NOT NULL,
+  `location`    VARCHAR(12) NOT NULL,
+  `last_name`   VARCHAR(9) NOT NULL,
+  `middle_name` VARCHAR(9) NOT NULL,
+  `first_name`  VARCHAR(8) NOT NULL,
+  PRIMARY KEY (`event_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (1,'10/8/2022','Suite 39','Sannes','Erna','Yvor');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (2,'5/10/2022','Room 105','Cromarty','Sterne','Maye');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (3,'5/26/2022','PO Box 43283','Pletts','Chilton','Ermina');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (4,'4/12/2023','4th Floor','Vaulkhard','Rachel','Tisha');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (5,'4/18/2022','Room 1076','Campaigne','Beverly','Ricky');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (6,'10/18/2022','Apt 580','Josef','Del','Beverlie');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (7,'11/20/2022','Suite 96','Normand','Gian','Willow');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (8,'6/9/2022','Apt 1392','O''Riordan','Clint','Timmie');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (9,'11/2/2022','Apt 403','Canham','Eran','Danica');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (10,'3/8/2023','Room 1186','Sharman','Zonnya','Derek');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (11,'6/4/2022','11th Floor','Garrals','Erick','Alene');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (12,'2/23/2023','Room 1140','Treweke','Lishe','Tom');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (13,'2/14/2023','Apt 480','Flexman','Finn','Drucill');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (14,'10/22/2022','13th Floor','Petren','Florencia','Lucia');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (15,'4/28/2022','9th Floor','Blackater','Roderick','Caddric');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (16,'5/13/2022','Room 379','Samworth','Woody','Urbano');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (17,'12/25/2022','Suite 58','Horney','Hermina','Adair');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (18,'7/6/2022','6th Floor','Roth','Colas','Roxine');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (19,'9/26/2022','Apt 820','Pressland','Amalia','Hobie');
+INSERT INTO `Events`(`event_id`, `date`, `location`, `last_name`, `middle_name`, `first_name`) VALUES (20,'8/27/2022','PO Box 69545','Seif','Brock','Robers');
+
+
+​​CREATE TABLE IF NOT EXISTS `dormhub`.`EventParticipants`(
+  `event_id`     INTEGER  NOT NULL, 
+  `participants` VARCHAR(389) NOT NULL,
+  PRIMARY KEY (`event_id`, `participants`),
+  FOREIGN KEY (`event_id`) REFERENCES `dormhub`.`Events` (`event_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (19,'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (9,'Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (3,'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (12,'Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (19,'Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (16,'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (6,'Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (7,'Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (4,'Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (14,'Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (4,'Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (13,'Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (6,'Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (14,'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (2,'Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (8,'Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (6,'Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (11,'Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (19,'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi.');
+INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (7,'Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.');
 
 
 CREATE TABLE SpotifyPlaylist(
-   student_id INTEGER  NOT NULL 
-  ,artist     VARCHAR(18) NOT NULL
-  ,album      VARCHAR(10) NOT NULL
-  ,genre      VARCHAR(31) NOT NULL
-  ,song       VARCHAR(11) NOT NULL
+  student_id INTEGER  NOT NULL 
+  artist     VARCHAR(18) NOT NULL
+  album      VARCHAR(10) NOT NULL
+  genre      VARCHAR(31) NOT NULL
+  song       VARCHAR(11) NOT NULL
   PRIMARY KEY (student_id),
   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
