@@ -421,91 +421,97 @@ INSERT INTO ResidentInterests(student_id,interests) VALUES (4,'Morbi vestibulum,
 INSERT INTO ResidentInterests(student_id,interests) VALUES (15,'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.');
 INSERT INTO ResidentInterests(student_id,interests) VALUES (2,'Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.');
 
+CREATE TABLE IF NOT EXISTS `dormhub`.`ResidentMajor`(
+  `student_id` INTEGER  NOT NULL PRIMARY KEY ,
+  `interests`  VARCHAR(496) NOT NULL,
+  PRIMARY KEY (`student_id`, `major`),
+  FOREIGN KEY (`student_id`) REFERENCES `dormhub`.`Residents` (`student_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE ResidentMajor(
-   student_id INTEGER  NOT NULL PRIMARY KEY 
-  ,interests  VARCHAR(496) NOT NULL
-  PRIMARY KEY (student_id, major),
-  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
-);
-INSERT INTO ResidentMajor(student_id,interests) VALUES (20,'at');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (6,'in');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (2,'aliquam');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (10,'turpis');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (10,'gravida');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (6,'in');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (6,'eget');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (17,'pede');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (10,'nulla');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (10,'ornare');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (1,'nisl');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (5,'vestibulum');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (18,'in');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (5,'ullamcorper');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (10,'ut');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (2,'aliquet');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (5,'morbi');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (13,'at');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (10,'suspendisse');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (5,'quam');
-
-
-
-CREATE TABLE ResidentMinor(
-   student_id INTEGER  NOT NULL PRIMARY KEY 
-  ,roommates  VARCHAR(125) NOT NULL
-  PRIMARY KEY (student_id, minor),
-  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
-);
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (16,'arcu sed augue aliquam erat');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (18,'varius integer');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (17,'proin leo odio');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (4,'nullam porttitor lacus at');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (5,'id luctus nec molestie sed');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (18,'viverra pede ac diam cras');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (18,'tincidunt ante vel');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (10,'quis orci nullam molestie nibh');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (10,'nulla eget');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (3,'quisque id justo sit amet');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (8,'vel augue vestibulum ante');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (11,'turpis donec');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (7,'sem duis');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (20,'quam suspendisse potenti nullam');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (6,'hendrerit at');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (17,'orci luctus et ultrices posuere');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (10,'quis libero nullam sit');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (7,'mauris lacinia sapien');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (10,'lobortis ligula');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (6,'amet sapien');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (20,'at');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (6,'in');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (2,'aliquam');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (10,'turpis');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (10,'gravida');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (6,'in');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (6,'eget');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (17,'pede');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (10,'nulla');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (10,'ornare');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (1,'nisl');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (5,'vestibulum');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (18,'in');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (5,'ullamcorper');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (10,'ut');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (2,'aliquet');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (5,'morbi');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (13,'at');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (10,'suspendisse');
+INSERT INTO `ResidentMajor`(`student_id`, `interests`) VALUES (5,'quam');
 
 
-CREATE TABLE RoommateConflict(
-   email           VARCHAR(36) NOT NULL PRIMARY KEY
-  ,description     VARCHAR(334) NOT NULL
-  ,floor_number    INTEGER  NOT NULL
-  ,building_number INTEGER  NOT NULL
-  ,rd_id           INTEGER  NOT NULL
-  ,student_id      INTEGER  NOT NULL
-  PRIMARY KEY (student_id),
-  FOREIGN KEY (rd_id) REFERENCES ResidentDirector (rd_id)
-);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('opetrovsky0@behance.net','Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.',1,1,18,1);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('ncommander1@rakuten.co.jp','Nulla tellus. In sagittis dui vel nisl.',2,2,9,2);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('sfricke2@ebay.co.uk','Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.',3,3,8,3);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('dmoar3@stanford.edu','Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue.',4,4,19,4);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('mheadings4@senate.gov','Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.',5,5,1,5);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('gbootell5@utexas.edu','Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis.',6,6,17,6);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('cvile6@flickr.com','Maecenas ut massa quis augue luctus tincidunt.',7,7,3,7);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('lphilippson7@gizmodo.com','Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.',8,8,18,8);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('snestle8@wsj.com','Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.',9,9,8,9);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('ccoronas9@independent.co.uk','Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit.',10,10,1,10);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('acouvea@comcast.net','Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.',11,11,2,11);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('ghamblettb@nature.com','Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus.',12,12,17,12);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('ckainesc@theguardian.com','Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.',13,13,20,13);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('mleftwichd@dedecms.com','Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.',14,14,10,14);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('mnuccie@theguardian.com','Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',15,15,14,15);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('mtewesf@amazonaws.com','Vivamus tortor.',16,16,18,16);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('yassanteg@yelp.com','Duis aliquam convallis nunc.',17,17,16,17);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('pcoulstonh@imgur.com','Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus.',18,18,14,18);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('syannikovi@army.mil','Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.',19,19,17,19);
-INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('wstarrj@unesco.org','Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.',20,20,15,20);
+CREATE TABLE IF NOT EXISTS `dormhub`.`ResidentMinor` (
+  `student_id` INTEGER  NOT NULL PRIMARY KEY,
+  `roommates`  VARCHAR(125) NOT NULL,
+  PRIMARY KEY (`student_id`, `minor`),
+  FOREIGN KEY (`student_id`) REFERENCES `dormhub`.`Residents` (`student_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (16,'arcu sed augue aliquam erat');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (18,'varius integer');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (17,'proin leo odio');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (4,'nullam porttitor lacus at');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (5,'id luctus nec molestie sed');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (18,'viverra pede ac diam cras');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (18,'tincidunt ante vel');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (10,'quis orci nullam molestie nibh');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (10,'nulla eget');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (3,'quisque id justo sit amet');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (8,'vel augue vestibulum ante');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (11,'turpis donec');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (7,'sem duis');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (20,'quam suspendisse potenti nullam');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (6,'hendrerit at');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (17,'orci luctus et ultrices posuere');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (10,'quis libero nullam sit');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (7,'mauris lacinia sapien');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (10,'lobortis ligula');
+INSERT INTO `ResidentMinor`(`student_id`, `roommates`) VALUES (6,'amet sapien');
+
+CREATE TABLE IF NOT EXISTS `dormhub`.`RoommateConflict` (
+  `email`          VARCHAR(36) NOT NULL PRIMARY KEY,
+  `description`    VARCHAR(334) NOT NULL,
+  `floor_number`    INTEGER  NOT NULL, 
+  `building_number` INTEGER  NOT NULL,
+  `rd_id`           INTEGER  NOT NULL,
+  `student_id`      INTEGER  NOT NULL,
+  PRIMARY KEY (`student_id`),
+  FOREIGN KEY (`rd_id`) REFERENCES `dormhub`.`ResidentDirector` (`rd_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('opetrovsky0@behance.net','Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.',1,1,18,1);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('ncommander1@rakuten.co.jp','Nulla tellus. In sagittis dui vel nisl.',2,2,9,2);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('sfricke2@ebay.co.uk','Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.',3,3,8,3);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('dmoar3@stanford.edu','Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue.',4,4,19,4);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('mheadings4@senate.gov','Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.',5,5,1,5);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('gbootell5@utexas.edu','Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis.',6,6,17,6);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('cvile6@flickr.com','Maecenas ut massa quis augue luctus tincidunt.',7,7,3,7);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('lphilippson7@gizmodo.com','Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.',8,8,18,8);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('snestle8@wsj.com','Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.',9,9,8,9);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('ccoronas9@independent.co.uk','Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit.',10,10,1,10);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('acouvea@comcast.net','Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.',11,11,2,11);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('ghamblettb@nature.com','Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus.',12,12,17,12);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('ckainesc@theguardian.com','Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.',13,13,20,13);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('mleftwichd@dedecms.com','Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.',14,14,10,14);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('mnuccie@theguardian.com','Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',15,15,14,15);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('mtewesf@amazonaws.com','Vivamus tortor.',16,16,18,16);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('yassanteg@yelp.com','Duis aliquam convallis nunc.',17,17,16,17);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('pcoulstonh@imgur.com','Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus.',18,18,14,18);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('syannikovi@army.mil','Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.',19,19,17,19);
+INSERT INTO `RoommateConflict`(`email`, `description`, `floor_number`, `building_number`, `rd_id`, `student_id`) VALUES ('wstarrj@unesco.org','Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.',20,20,15,20);
