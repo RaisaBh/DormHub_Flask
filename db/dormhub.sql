@@ -4,7 +4,7 @@ USE dormhub;
 
 -- Fix the start_time and end_time
 CREATE TABLE WeeklySchedule(
-   days_on_shift DATE  NOT NULL PRIMARY KEY
+   days_on_shift DATE  NOT NULL 
   ,start_time    VARCHAR(8) NOT NULL
   ,end_time      VARCHAR(8) NOT NULL
   ,ra_id         INTEGER  NOT NULL
