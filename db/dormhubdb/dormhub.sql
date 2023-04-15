@@ -233,6 +233,8 @@ INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (9,'Roder
 CREATE TABLE ResidentsRA(
    ra_id      INTEGER  NOT NULL PRIMARY KEY 
   ,student_id INTEGER  NOT NULL
+  PRIMARY KEY (student_id),
+  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
 INSERT INTO ResidentsRA(ra_id,student_id) VALUES (1,17);
 INSERT INTO ResidentsRA(ra_id,student_id) VALUES (2,11);
@@ -271,6 +273,9 @@ CREATE TABLE Residents(
   ,room_number     INTEGER  NOT NULL
   ,phone_number    VARCHAR(12) NOT NULL
   ,perm_address    VARCHAR(12) NOT NULL
+  PRIMARY KEY (student_id),
+  FOREIGN KEY (rd_id) REFERENCES ResidentDirector (rd_id),
+  FOREIGN KEY (ra_id) REFERENCES Events (ra_id)
 );
 INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (1,9,15,'hillingsworth0@live.com',2012,'turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus','Illingsworth','Veronike','Hasty',1,1,7895,'522-975-0695','Suite 89');
 INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (2,1,13,'ideverick1@wunderground.com',1994,'adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue','Deverick','Inglis','Isadora',2,2,422,'174-371-9142','Suite 41');
@@ -297,6 +302,8 @@ INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middl
 CREATE TABLE ResidentRoommates(
    student_id INTEGER  NOT NULL PRIMARY KEY 
   ,roommates  VARCHAR(125) NOT NULL
+  PRIMARY KEY (student_id, roommates),
+  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
 INSERT INTO ResidentRoommates(student_id,roommates) VALUES (16,'lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum');
 INSERT INTO ResidentRoommates(student_id,roommates) VALUES (17,'eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut');
@@ -327,6 +334,8 @@ CREATE TABLE GroceryList(
   ,last_name   VARCHAR(9) NOT NULL
   ,middle_name VARCHAR(9) NOT NULL
   ,first_name  VARCHAR(8) NOT NULL
+  PRIMARY KEY (student_id),
+  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
 INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Lucilia Bing,'47','32','11/9/2022','sapien','2');
 INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Lizzie Haining,'14','81','11/19/2022','nam','20');
@@ -360,6 +369,8 @@ CREATE TABLE ResidentDirector(
   ,perm_address    VARCHAR(22) NOT NULL
   ,ra_id           INTEGER  NOT NULL
   ,rd_id           INTEGER  NOT NULL
+  PRIMARY KEY (rd_id),
+  FOREIGN KEY (ra_id) REFERENCES WeeklySchedule (ra_id)
 );
 INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('mtreadaway0@51.la','2/17/2023','Treadaway','Shannan','Milly',1,'0 Dunning Court',5,1);
 INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('froly1@so-net.ne.jp','1/16/2023','Roly','Alvie','Frayda',2,'64 Warbler Point',7,2);
@@ -386,6 +397,8 @@ INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,b
 CREATE TABLE ResidentInterests(
    student_id INTEGER  NOT NULL PRIMARY KEY 
   ,interests  VARCHAR(496) NOT NULL
+  PRIMARY KEY (student_id, interests),
+  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
 INSERT INTO ResidentInterests(student_id,interests) VALUES (7,'Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum.');
 INSERT INTO ResidentInterests(student_id,interests) VALUES (16,'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum.');
@@ -412,6 +425,8 @@ INSERT INTO ResidentInterests(student_id,interests) VALUES (2,'Vestibulum sed ma
 CREATE TABLE ResidentMajor(
    student_id INTEGER  NOT NULL PRIMARY KEY 
   ,interests  VARCHAR(496) NOT NULL
+  PRIMARY KEY (student_id, major),
+  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
 INSERT INTO ResidentMajor(student_id,interests) VALUES (20,'at');
 INSERT INTO ResidentMajor(student_id,interests) VALUES (6,'in');
@@ -439,6 +454,8 @@ INSERT INTO ResidentMajor(student_id,interests) VALUES (5,'quam');
 CREATE TABLE ResidentMinor(
    student_id INTEGER  NOT NULL PRIMARY KEY 
   ,roommates  VARCHAR(125) NOT NULL
+  PRIMARY KEY (student_id, minor),
+  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
 INSERT INTO ResidentMinor(student_id,roommates) VALUES (16,'arcu sed augue aliquam erat');
 INSERT INTO ResidentMinor(student_id,roommates) VALUES (18,'varius integer');
@@ -469,6 +486,8 @@ CREATE TABLE RoommateConflict(
   ,building_number INTEGER  NOT NULL
   ,rd_id           INTEGER  NOT NULL
   ,student_id      INTEGER  NOT NULL
+  PRIMARY KEY (student_id),
+  FOREIGN KEY (rd_id) REFERENCES ResidentDirector (rd_id)
 );
 INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('opetrovsky0@behance.net','Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.',1,1,18,1);
 INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('ncommander1@rakuten.co.jp','Nulla tellus. In sagittis dui vel nisl.',2,2,9,2);
