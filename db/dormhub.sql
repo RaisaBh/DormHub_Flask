@@ -10,26 +10,26 @@ CREATE TABLE WeeklySchedule(
   ,ra_id         INTEGER  NOT NULL,
   PRIMARY KEY (ra_id)
 );
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('1/24/2023', '8:04 PM','8:43 AM',1);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('1/14/2023','11:23 AM','10:41 AM',2);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('3/11/2023','12:43 AM','3:37 PM',3);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('11/24/2022','10:43 PM','5:43 PM',4);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('12/18/2022','9:43 AM','9:39 AM',5);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/9/2022','10:31 PM','6:11 PM',6);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('3/14/2023','3:36 AM','11:19 AM',7);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/9/2023','7:29 PM','4:11 AM',8);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('12/11/2022','6:22 PM','2:46 PM',9);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('4/10/2023','4:59 AM','9:06 PM',10);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('12/29/2022','7:26 PM','7:08 PM',11);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/9/2022','2:11 PM','1:57 AM',12);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('4/8/2023','10:02 AM','4:20 AM',13);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/4/2023','10:11 PM','3:04 PM',14);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/28/2023','8:10 PM','12:00 AM',15);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/30/2022','7:14 AM','1:43 AM',16);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('4/25/2023','9:25 AM','5:56 AM',17);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('11/9/2022','11:16 AM','7:12 AM',18);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/2/2022','10:25 PM','5:29 AM',19);
-INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/20/2023','8:32 AM','4:16 PM',20);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('1/24/2023', '8:04 PM','8:43 AM',1);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('1/14/2023','11:23 AM','10:41 AM',2);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('3/11/2023','12:43 AM','3:37 PM',3);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('11/24/2022','10:43 PM','5:43 PM',4);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('12/18/2022','9:43 AM','9:39 AM',5);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/9/2022','10:31 PM','6:11 PM',6);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('3/14/2023','3:36 AM','11:19 AM',7);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/9/2023','7:29 PM','4:11 AM',8);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('12/11/2022','6:22 PM','2:46 PM',9);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('4/10/2023','4:59 AM','9:06 PM',10);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('12/29/2022','7:26 PM','7:08 PM',11);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/9/2022','2:11 PM','1:57 AM',12);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('4/8/2023','10:02 AM','4:20 AM',13);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/4/2023','10:11 PM','3:04 PM',14);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/28/2023','8:10 PM','12:00 AM',15);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/30/2022','7:14 AM','1:43 AM',16);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('4/25/2023','9:25 AM','5:56 AM',17);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('11/9/2022','11:16 AM','7:12 AM',18);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/2/2022','10:25 PM','5:29 AM',19);
+-- INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/20/2023','8:32 AM','4:16 PM',20);
 
 CREATE TABLE Attend(
    student_id INTEGER  NOT NULL
@@ -67,26 +67,26 @@ CREATE TABLE Calendar(
   PRIMARY KEY (student_id),
   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('604 Buhler Avenue','9/19/2022','Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.',20);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('763 Arrowood Drive','12/25/2022','Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit.',20);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('3 Dapin Point','1/24/2023','Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue.',14);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('9 Stang Avenue','9/14/2022','Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',18);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('06020 Rowland Drive','10/23/2022','Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',20);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('985 Lawn Center','11/25/2022','Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.',15);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('26148 1st Way','1/17/2023','Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.',15);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('0 Lighthouse Bay Junction','10/26/2022','Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.',6);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('2492 Banding Pass','11/10/2022','Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.',12);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('5336 Dorton Pass','2/26/2023','Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.',12);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('71761 Talmadge Lane','10/11/2022','Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.',20);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('0367 Holmberg Lane','10/18/2022','Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla.',10);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('88 Shelley Road','3/25/2023','Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.',10);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('49 Spenser Street','9/24/2022','Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.',10);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('12975 Fordem Avenue','9/25/2022','Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.',16);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('52323 Dapin Court','10/25/2022','Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.',11);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('609 Buell Court','1/16/2023','Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia.',7);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('895 Mandrake Alley','3/6/2023','Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt.',16);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('99189 Surrey Point','11/3/2022','Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus.',4);
-INSERT INTO Calendar(location,date,event,student_id) VALUES ('4593 Forster Road','11/12/2022','Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim.',11);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('604 Buhler Avenue','9/19/2022','Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.',20);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('763 Arrowood Drive','12/25/2022','Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit.',20);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('3 Dapin Point','1/24/2023','Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue.',14);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('9 Stang Avenue','9/14/2022','Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',18);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('06020 Rowland Drive','10/23/2022','Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',20);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('985 Lawn Center','11/25/2022','Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.',15);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('26148 1st Way','1/17/2023','Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.',15);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('0 Lighthouse Bay Junction','10/26/2022','Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.',6);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('2492 Banding Pass','11/10/2022','Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.',12);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('5336 Dorton Pass','2/26/2023','Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.',12);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('71761 Talmadge Lane','10/11/2022','Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.',20);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('0367 Holmberg Lane','10/18/2022','Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla.',10);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('88 Shelley Road','3/25/2023','Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.',10);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('49 Spenser Street','9/24/2022','Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.',10);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('12975 Fordem Avenue','9/25/2022','Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.',16);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('52323 Dapin Court','10/25/2022','Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.',11);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('609 Buell Court','1/16/2023','Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia.',7);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('895 Mandrake Alley','3/6/2023','Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt.',16);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('99189 Surrey Point','11/3/2022','Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus.',4);
+-- INSERT INTO Calendar(location,date,event,student_id) VALUES ('4593 Forster Road','11/12/2022','Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim.',11);
 
 
 CREATE TABLE CalendarParticipants(
