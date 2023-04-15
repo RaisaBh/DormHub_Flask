@@ -4,10 +4,10 @@ USE dormhub;
 
 -- Fix the start_time and end_time
 CREATE TABLE WeeklySchedule(
-   days_on_shift DATE  NOT NULL 
+   days_on_shift DATE  NOT NULL
   ,start_time    VARCHAR(8) NOT NULL
   ,end_time      VARCHAR(8) NOT NULL
-  ,ra_id         INTEGER  NOT NULL
+  ,ra_id         INTEGER  NOT NULL,
   PRIMARY KEY (ra_id)
 );
 INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('1/24/2023', '8:04 PM','8:43 AM',1);
@@ -32,11 +32,11 @@ INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('10/
 INSERT INTO WeeklySchedule(days_on_shift,start_time,end_time,ra_id) VALUES ('2/20/2023','8:32 AM','4:16 PM',20);
 
 CREATE TABLE Attend(
-   student_id INTEGER  NOT NULL 
-  ,event_id   INTEGER  NOT NULL
-  PRIMARY KEY (student_id, ra_id),
+   student_id INTEGER  NOT NULL
+  ,event_id   INTEGER  NOT NULL,
+  PRIMARY KEY (student_id, event_id),
   FOREIGN KEY (student_id) REFERENCES Residents (student_id),
-  FOREIGN KEY (ra_id) REFERENCES Events (ra_id)
+  FOREIGN KEY (event_id) REFERENCES Events (event_id)
 );
 INSERT INTO Attend(student_id,event_id) VALUES (1,13);
 INSERT INTO Attend(student_id,event_id) VALUES (2,6);
@@ -60,10 +60,10 @@ INSERT INTO Attend(student_id,event_id) VALUES (19,11);
 INSERT INTO Attend(student_id,event_id) VALUES (20,4);
 
 CREATE TABLE Calendar(
-   location   VARCHAR(25) NOT NULL PRIMARY KEY
+   location   VARCHAR(25) NOT NULL
   ,date       DATE  NOT NULL
   ,event      VARCHAR(413) NOT NULL
-  ,student_id INTEGER  NOT NULL
+  ,student_id INTEGER  NOT NULL,
   PRIMARY KEY (student_id),
   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
@@ -90,8 +90,9 @@ INSERT INTO Calendar(location,date,event,student_id) VALUES ('4593 Forster Road'
 
 
 CREATE TABLE CalendarParticipants(
-   student_id   INTEGER  NOT NULL PRIMARY KEY 
-  ,participants VARCHAR(451) NOT NULL
+   student_id   INTEGER  NOT NULL
+  ,participants VARCHAR(451) NOT NULL,
+  PRIMARY KEY (student_id, participants),
   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
 INSERT INTO CalendarParticipants(student_id,participants) VALUES (9,'Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.');
@@ -116,10 +117,10 @@ INSERT INTO CalendarParticipants(student_id,participants) VALUES (6,'Suspendisse
 INSERT INTO CalendarParticipants(student_id,participants) VALUES (6,'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus.');
 
 CREATE TABLE Chores(
-   name         VARCHAR(71) NOT NULL PRIMARY KEY
+   name         VARCHAR(71) NOT NULL
   ,deadline     DATE  NOT NULL
   ,day_assigned DATE  NOT NULL
-  ,student_id   INTEGER  NOT NULL
+  ,student_id   INTEGER  NOT NULL,
   PRIMARY KEY (student_id),
   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
@@ -146,12 +147,13 @@ INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('arcu adipisci
 
 
 CREATE TABLE Events(
-   event_id    INTEGER  NOT NULL PRIMARY KEY 
+   event_id    INTEGER  NOT NULL
   ,date        DATE  NOT NULL
   ,location    VARCHAR(12) NOT NULL
   ,last_name   VARCHAR(9) NOT NULL
   ,middle_name VARCHAR(9) NOT NULL
-  ,first_name  VARCHAR(8) NOT NULL
+  ,first_name  VARCHAR(8) NOT NULL,
+   PRIMARY KEY(event_id)
 );
 INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (1,'10/8/2022','Suite 39','Sannes','Erna','Yvor');
 INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (2,'5/10/2022','Room 105','Cromarty','Sterne','Maye');
@@ -174,11 +176,10 @@ INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALU
 INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (19,'9/26/2022','Apt 820','Pressland','Amalia','Hobie');
 INSERT INTO Events(event_id,date,location,last_name,middle_name,first_name) VALUES (20,'8/27/2022','PO Box 69545','Seif','Brock','Robers');
 
-
-​​CREATE TABLE EventParticipants(
-   event_id     INTEGER  NOT NULL 
-  ,participants VARCHAR(389) NOT NULL
-  PRIMARY KEY (event_id participants),
+CREATE TABLE EventParticipants(
+   event_id     INTEGER  NOT NULL
+  ,participants VARCHAR(389) NOT NULL,
+  PRIMARY KEY (event_id, participants),
   FOREIGN KEY (event_id) REFERENCES Events (event_id)
 );
 INSERT INTO EventParticipants(event_id,participants) VALUES (19,'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.');
@@ -204,11 +205,11 @@ INSERT INTO EventParticipants(event_id,participants) VALUES (7,'Vestibulum sed m
 
 
 CREATE TABLE SpotifyPlaylist(
-   student_id INTEGER  NOT NULL 
+   student_id INTEGER  NOT NULL
   ,artist     VARCHAR(18) NOT NULL
   ,album      VARCHAR(10) NOT NULL
   ,genre      VARCHAR(31) NOT NULL
-  ,song       VARCHAR(11) NOT NULL
+  ,song       VARCHAR(11) NOT NULL,
   PRIMARY KEY (student_id),
   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
@@ -235,8 +236,8 @@ INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (9,'Roder
 
 
 CREATE TABLE ResidentsRA(
-   ra_id      INTEGER  NOT NULL PRIMARY KEY 
-  ,student_id INTEGER  NOT NULL
+   ra_id      INTEGER  NOT NULL
+  ,student_id INTEGER  NOT NULL,
   PRIMARY KEY (student_id),
   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
@@ -263,7 +264,7 @@ INSERT INTO ResidentsRA(ra_id,student_id) VALUES (20,9);
 
 
 CREATE TABLE Residents(
-   student_id      INTEGER  NOT NULL PRIMARY KEY 
+   student_id      INTEGER  NOT NULL
   ,rd_id           INTEGER  NOT NULL
   ,ra_id           INTEGER  NOT NULL
   ,email           VARCHAR(27) NOT NULL
@@ -276,10 +277,10 @@ CREATE TABLE Residents(
   ,building_number INTEGER  NOT NULL
   ,room_number     INTEGER  NOT NULL
   ,phone_number    VARCHAR(12) NOT NULL
-  ,perm_address    VARCHAR(12) NOT NULL
+  ,perm_address    VARCHAR(12) NOT NULL,
   PRIMARY KEY (student_id),
   FOREIGN KEY (rd_id) REFERENCES ResidentDirector (rd_id),
-  FOREIGN KEY (ra_id) REFERENCES Events (ra_id)
+  FOREIGN KEY (ra_id) REFERENCES WeeklySchedule (ra_id)
 );
 INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (1,9,15,'hillingsworth0@live.com',2012,'turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus','Illingsworth','Veronike','Hasty',1,1,7895,'522-975-0695','Suite 89');
 INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (2,1,13,'ideverick1@wunderground.com',1994,'adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue','Deverick','Inglis','Isadora',2,2,422,'174-371-9142','Suite 41');
@@ -304,8 +305,8 @@ INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middl
 
 
 CREATE TABLE ResidentRoommates(
-   student_id INTEGER  NOT NULL PRIMARY KEY 
-  ,roommates  VARCHAR(125) NOT NULL
+   student_id INTEGER  NOT NULL
+  ,roommates  VARCHAR(125) NOT NULL,
   PRIMARY KEY (student_id, roommates),
   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
@@ -332,39 +333,39 @@ INSERT INTO ResidentRoommates(student_id,roommates) VALUES (7,'massa id lobortis
 
 
 CREATE TABLE GroceryList(
-   event_id    INTEGER  NOT NULL PRIMARY KEY 
-  ,date        DATE  NOT NULL
-  ,location    VARCHAR(12) NOT NULL
-  ,last_name   VARCHAR(9) NOT NULL
-  ,middle_name VARCHAR(9) NOT NULL
-  ,first_name  VARCHAR(8) NOT NULL
-  PRIMARY KEY (student_id),
-  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
+   name        VARCHAR(8) NOT NULL
+  ,cost        INTEGER  NOT NULL
+  ,budget      INTEGER  NOT NULL
+  ,date_bought DATE  NOT NULL
+  ,item        VARCHAR(12) NOT NULL
+  ,student_id  INTEGER  NOT NULL,
+   PRIMARY KEY (student_id),
+   FOREIGN KEY (student_id) REFERENCES Residents(student_id)
 );
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Lucilia Bing,'47','32','11/9/2022','sapien','2');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Lizzie Haining,'14','81','11/19/2022','nam','20');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Gwenette Visick,'22','28','3/17/2023','sit','3');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Gena Sterricker,'51','98','3/3/2023','semper','8');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Miner McRobert,'76','98','10/10/2022','commodo','17');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Egan Bilovsky,'19','88','9/22/2022','quis','3');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Bordie Dowrey,'61','79','2/21/2023','lacinia','17');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Crystal Colthard,'91','14','3/30/2023','in','6');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Levon Lightman,'33','52','1/8/2023','erat','6');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Maximilien Atwel,'50','34','10/28/2022','sit','14');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Lanny Burfield,'27','5','1/20/2023','dictumst','11');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Tonnie Hebditch,'73','93','10/17/2022','ante','14');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Laura Ridley,'72','60','9/27/2022','curabitur','13');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Kingston Arsnell,'97','85','11/16/2022','nulla','13');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Nedi Adamiak,'71','74','2/1/2023','ligula','3');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Colleen Viall,'3','100','3/29/2023','erat','19');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Weston Mannooch,'77','2','11/20/2022','ipsum','16');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Dev Beauvais,'87','80','9/22/2022','eget','1');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Marian Spileman,'58','76','4/4/2023','porta','2');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Kristian Delacour,'26','23','9/7/2022','eget','7');
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Lyda',43,97,'2/3/2023','vel',7);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Stafford',33,76,'12/24/2022','vestibulum',8);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Ariella',56,14,'2/26/2023','lectus',12);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Rozalie',5,90,'9/30/2022','in',14);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Allegra',10,62,'4/6/2023','nullam',15);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Dorthea',40,12,'3/17/2023','elementum',13);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Evered',72,13,'1/13/2023','ac',10);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Tremayne',85,69,'2/8/2023','turpis',1);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Babette',94,32,'4/13/2023','donec',16);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Shaylah',30,19,'9/12/2022','tristique',14);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Winni',91,69,'10/4/2022','vestibulum',20);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Smith',85,93,'10/16/2022','pellentesque',2);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Laure',31,57,'12/30/2022','volutpat',2);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Judy',36,37,'12/4/2022','enim',5);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Dorelia',23,60,'1/18/2023','augue',5);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Corty',32,8,'12/28/2022','rhoncus',11);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Grady',42,86,'12/23/2022','consequat',15);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Franky',30,57,'10/24/2022','curae',19);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Waldemar',51,14,'10/20/2022','in',18);
+INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Davon',19,62,'10/28/2022','libero',19);
 
 
 CREATE TABLE ResidentDirector(
-   email           VARCHAR(28) NOT NULL PRIMARY KEY
+   email           VARCHAR(28) NOT NULL
   ,start_date      DATE  NOT NULL
   ,last_name       VARCHAR(13) NOT NULL
   ,middle_name     VARCHAR(9) NOT NULL
@@ -372,7 +373,7 @@ CREATE TABLE ResidentDirector(
   ,building_number INTEGER  NOT NULL
   ,perm_address    VARCHAR(22) NOT NULL
   ,ra_id           INTEGER  NOT NULL
-  ,rd_id           INTEGER  NOT NULL
+  ,rd_id           INTEGER  NOT NULL,
   PRIMARY KEY (rd_id),
   FOREIGN KEY (ra_id) REFERENCES WeeklySchedule (ra_id)
 );
@@ -399,8 +400,8 @@ INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,b
 
 
 CREATE TABLE ResidentInterests(
-   student_id INTEGER  NOT NULL PRIMARY KEY 
-  ,interests  VARCHAR(496) NOT NULL
+   student_id INTEGER  NOT NULL
+  ,interests  VARCHAR(496) NOT NULL,
   PRIMARY KEY (student_id, interests),
   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
@@ -427,69 +428,69 @@ INSERT INTO ResidentInterests(student_id,interests) VALUES (2,'Vestibulum sed ma
 
 
 CREATE TABLE ResidentMajor(
-   student_id INTEGER  NOT NULL PRIMARY KEY 
-  ,interests  VARCHAR(496) NOT NULL
+   student_id INTEGER  NOT NULL
+  ,major  VARCHAR(496) NOT NULL,
   PRIMARY KEY (student_id, major),
   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
-INSERT INTO ResidentMajor(student_id,interests) VALUES (20,'at');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (6,'in');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (2,'aliquam');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (10,'turpis');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (10,'gravida');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (6,'in');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (6,'eget');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (17,'pede');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (10,'nulla');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (10,'ornare');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (1,'nisl');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (5,'vestibulum');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (18,'in');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (5,'ullamcorper');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (10,'ut');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (2,'aliquet');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (5,'morbi');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (13,'at');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (10,'suspendisse');
-INSERT INTO ResidentMajor(student_id,interests) VALUES (5,'quam');
+INSERT INTO ResidentMajor(student_id,major) VALUES (20,'at');
+INSERT INTO ResidentMajor(student_id,major) VALUES (6,'in');
+INSERT INTO ResidentMajor(student_id,major) VALUES (2,'aliquam');
+INSERT INTO ResidentMajor(student_id,major) VALUES (10,'turpis');
+INSERT INTO ResidentMajor(student_id,major) VALUES (10,'gravida');
+INSERT INTO ResidentMajor(student_id,major) VALUES (6,'in');
+INSERT INTO ResidentMajor(student_id,major) VALUES (6,'eget');
+INSERT INTO ResidentMajor(student_id,major) VALUES (17,'pede');
+INSERT INTO ResidentMajor(student_id,major) VALUES (10,'nulla');
+INSERT INTO ResidentMajor(student_id,major) VALUES (10,'ornare');
+INSERT INTO ResidentMajor(student_id,major) VALUES (1,'nisl');
+INSERT INTO ResidentMajor(student_id,major) VALUES (5,'vestibulum');
+INSERT INTO ResidentMajor(student_id,major) VALUES (18,'in');
+INSERT INTO ResidentMajor(student_id,major) VALUES (5,'ullamcorper');
+INSERT INTO ResidentMajor(student_id,major) VALUES (10,'ut');
+INSERT INTO ResidentMajor(student_id,major) VALUES (2,'aliquet');
+INSERT INTO ResidentMajor(student_id,major) VALUES (5,'morbi');
+INSERT INTO ResidentMajor(student_id,major) VALUES (13,'at');
+INSERT INTO ResidentMajor(student_id,major) VALUES (10,'suspendisse');
+INSERT INTO ResidentMajor(student_id,major) VALUES (5,'quam');
 
 
 
 CREATE TABLE ResidentMinor(
-   student_id INTEGER  NOT NULL PRIMARY KEY 
-  ,roommates  VARCHAR(125) NOT NULL
+   student_id INTEGER  NOT NULL
+  ,minor  VARCHAR(125) NOT NULL,
   PRIMARY KEY (student_id, minor),
   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (16,'arcu sed augue aliquam erat');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (18,'varius integer');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (17,'proin leo odio');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (4,'nullam porttitor lacus at');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (5,'id luctus nec molestie sed');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (18,'viverra pede ac diam cras');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (18,'tincidunt ante vel');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (10,'quis orci nullam molestie nibh');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (10,'nulla eget');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (3,'quisque id justo sit amet');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (8,'vel augue vestibulum ante');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (11,'turpis donec');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (7,'sem duis');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (20,'quam suspendisse potenti nullam');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (6,'hendrerit at');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (17,'orci luctus et ultrices posuere');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (10,'quis libero nullam sit');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (7,'mauris lacinia sapien');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (10,'lobortis ligula');
-INSERT INTO ResidentMinor(student_id,roommates) VALUES (6,'amet sapien');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (16,'arcu sed augue aliquam erat');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (18,'varius integer');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (17,'proin leo odio');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (4,'nullam porttitor lacus at');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (5,'id luctus nec molestie sed');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (18,'viverra pede ac diam cras');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (18,'tincidunt ante vel');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (10,'quis orci nullam molestie nibh');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (10,'nulla eget');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (3,'quisque id justo sit amet');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (8,'vel augue vestibulum ante');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (11,'turpis donec');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (7,'sem duis');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (20,'quam suspendisse potenti nullam');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (6,'hendrerit at');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (17,'orci luctus et ultrices posuere');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (10,'quis libero nullam sit');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (7,'mauris lacinia sapien');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (10,'lobortis ligula');
+INSERT INTO ResidentMinor(student_id,minor) VALUES (6,'amet sapien');
 
 
 CREATE TABLE RoommateConflict(
-   email           VARCHAR(36) NOT NULL PRIMARY KEY
+   email           VARCHAR(36) NOT NULL
   ,description     VARCHAR(334) NOT NULL
   ,floor_number    INTEGER  NOT NULL
   ,building_number INTEGER  NOT NULL
   ,rd_id           INTEGER  NOT NULL
-  ,student_id      INTEGER  NOT NULL
+  ,student_id      INTEGER  NOT NULL,
   PRIMARY KEY (student_id),
   FOREIGN KEY (rd_id) REFERENCES ResidentDirector (rd_id)
 );
