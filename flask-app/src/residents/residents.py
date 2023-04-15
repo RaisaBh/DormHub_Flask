@@ -21,21 +21,21 @@ def add_new_interests():
     # access json data from requested object
     current_app.logger.info('Processing form data')
     req_data = request.get_json()
-    current_app.lpgger.info(req_data)
+    current_app.logger.info(req_data)
 
-    interest = req_data['interests']
     stu_id = req_data['student_id']
+    interests = req_data['interests']
     cursor = db.get_db().cursor()
     
     # construct the insert statement
-    insert_stmt = 'INSERT INTO ResidentInterests (student_id, interests) VALUES (" '
-    insert_stmt += stu_id + '", "' + interest + ')'
-
-    current_app.logger.info(insert_stmt)
+    query = 'INSERT INTO ResidentInterests(student_id, interests) VALUES ('
+    query += str(stu_id) + ', "'
+    query += interests + '")'
+    current_app.logger.info(query)
 
     # execute the query
     cursor = db.get_db().cursor()
-    cursor.execute(insert_stmt)
+    cursor.execute(query)
     db.get_db().commit()
 
     return 'Success'
@@ -47,7 +47,7 @@ def add_new_songs():
     # access json data from requested object
     current_app.logger.info('Processing form data')
     req_data = request.get_json()
-    current_app.lpgger.info(req_data)
+    current_app.logger.info(req_data)
 
     stu_id = req_data['student_id']
     artist = req_data['artist']
@@ -57,14 +57,18 @@ def add_new_songs():
     cursor = db.get_db().cursor()
     
     # construct the insert statement
-    insert_stmt = 'INSERT INTO SpotifyPlaylist(student_id, artist, album, genre, song) VALUES (" '
-    insert_stmt += stu_id + '", "' + artist + '", "' + album + '", "' + genre + '", "' + song + ')'
+    query = 'INSERT INTO SpotifyPlaylist(student_id, artist, album, genre, song) VALUES ('
+    query += str(stu_id) + ', "'
+    query += artist + '", "'
+    query += album + '", "'
+    query += genre + '", "'
+    query += song + '")'
 
-    current_app.logger.info(insert_stmt)
+    current_app.logger.info(query)
 
     # execute the query
     cursor = db.get_db().cursor()
-    cursor.execute(insert_stmt)
+    cursor.execute(query)
     db.get_db().commit()
 
     return 'Success'

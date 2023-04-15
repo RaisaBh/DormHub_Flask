@@ -247,9 +247,9 @@ INSERT INTO CalendarParticipants(student_id,participants) VALUES (6,'Mauris enim
 CREATE TABLE SpotifyPlaylist(
                                 student_id INTEGER  NOT NULL
     ,artist     VARCHAR(18) NOT NULL
-    ,album      VARCHAR(10) NOT NULL
+    ,album      VARCHAR(30) NOT NULL
     ,genre      VARCHAR(31) NOT NULL
-    ,song       VARCHAR(11) NOT NULL,
+    ,song       VARCHAR(20) NOT NULL,
     FOREIGN KEY (student_id) REFERENCES Residents (student_id)
 );
 INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (8,'Reade Yesinov','montes','Crime|Mystery|Thriller','erat');
