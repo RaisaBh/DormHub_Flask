@@ -230,227 +230,243 @@ INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (19,'Curabitu
 INSERT INTO `EventParticipants`(`event_id`, `participants`) VALUES (7,'Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.');
 
 
-CREATE TABLE SpotifyPlaylist(
-  student_id INTEGER  NOT NULL 
-  artist     VARCHAR(18) NOT NULL
-  album      VARCHAR(10) NOT NULL
-  genre      VARCHAR(31) NOT NULL
-  song       VARCHAR(11) NOT NULL
-  PRIMARY KEY (student_id),
-  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
-);
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (8,'Reade Yesinov','montes','Crime|Mystery|Thriller','erat');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (13,'Sean Masedon','justo','Drama','in');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (18,'Dolf Haighton','suscipit','Comedy','aliquet');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (12,'Latia Dering','amet','Documentary','amet');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (1,'Maudie Rubbert','volutpat','Drama|Musical','in');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (15,'Troy Fairbank','ut','Comedy','faucibus');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (7,'Lanny Skeath','lectus','Comedy|Romance','tincidunt');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (3,'Joanna Timlett','mi','Action|Adventure|Comedy','nulla');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (14,'Cobbie Fassmann','sit','Comedy','luctus');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (16,'Deny McGeagh','nec','Comedy|Documentary','tempus');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (5,'Thacher Penhearow','sed','Drama|Romance|War','eros');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (9,'Cammy Melmeth','aliquam','Drama','eget');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (6,'Lynnette Pawling','magna','Animation|Children','suscipit');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (14,'Al Mazzia','in','Drama','suspendisse');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (8,'Kelsey Kingsbury','donec','Drama|Romance','sit');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (4,'Tyrone Gallyon','nulla','Horror|Sci-Fi|Thriller','metus');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (16,'Alicia Brandts','aliquet','Comedy','amet');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (7,'Elbertina Bryceson','elementum','Drama|Fantasy','in');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (3,'Jonis Grote','adipiscing','Comedy|Crime|Drama','in');
-INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (9,'Roderic Defont','amet','Action|Adventure|Comedy|Romance','justo');
+CREATE TABLE IF NOT EXISTS `dormhub`.`SpotifyPlaylist`(
+   `student_id` INTEGER  NOT NULL 
+  ,`artist`     VARCHAR(18) NOT NULL
+  ,`album`      VARCHAR(10) NOT NULL
+  ,`genre`      VARCHAR(31) NOT NULL
+  ,`song`       VARCHAR(11) NOT NULL
+  PRIMARY KEY (`student_id`),
+  FOREIGN KEY (`student_id`) REFERENCES `dormhub`.`Residents` (`student_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (8,'Reade Yesinov','montes','Crime|Mystery|Thriller','erat');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (13,'Sean Masedon','justo','Drama','in');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (18,'Dolf Haighton','suscipit','Comedy','aliquet');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (12,'Latia Dering','amet','Documentary','amet');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (1,'Maudie Rubbert','volutpat','Drama|Musical','in');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (15,'Troy Fairbank','ut','Comedy','faucibus');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (7,'Lanny Skeath','lectus','Comedy|Romance','tincidunt');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (3,'Joanna Timlett','mi','Action|Adventure|Comedy','nulla');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (14,'Cobbie Fassmann','sit','Comedy','luctus');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (16,'Deny McGeagh','nec','Comedy|Documentary','tempus');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (5,'Thacher Penhearow','sed','Drama|Romance|War','eros');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (9,'Cammy Melmeth','aliquam','Drama','eget');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (6,'Lynnette Pawling','magna','Animation|Children','suscipit');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (14,'Al Mazzia','in','Drama','suspendisse');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (8,'Kelsey Kingsbury','donec','Drama|Romance','sit');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (4,'Tyrone Gallyon','nulla','Horror|Sci-Fi|Thriller','metus');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (16,'Alicia Brandts','aliquet','Comedy','amet');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (7,'Elbertina Bryceson','elementum','Drama|Fantasy','in');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (3,'Jonis Grote','adipiscing','Comedy|Crime|Drama','in');
+INSERT INTO `SpotifyPlaylist`(`student_id`,`artist`,`album`,`genre`,`song`) VALUES (9,'Roderic Defont','amet','Action|Adventure|Comedy|Romance','justo');
+
+CREATE TABLE IF NOT EXISTS `dormhub`.`ResidentsRA`(
+   `ra_id`      INTEGER  NOT NULL PRIMARY KEY 
+  ,`student_id` INTEGER  NOT NULL
+  PRIMARY KEY (`student_id`),
+  FOREIGN KEY (`student_id`) REFERENCES `dormhub`.`Residents` (`student_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (1,17);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (2,11);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (3,17);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (4,11);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (5,13);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (6,6);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (7,13);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (8,15);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (9,11);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (10,15);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (11,4);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (12,18);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (13,1);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (14,16);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (15,3);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (16,2);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (17,20);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (18,20);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (19,13);
+INSERT INTO `ResidentsRA`(`ra_id`,`student_id`) VALUES (20,9);
+
+CREATE TABLE IF NOT EXISTS `dormhub`.`Residents`(
+   `student_id`      INTEGER  NOT NULL PRIMARY KEY 
+  ,`rd_id`           INTEGER  NOT NULL
+  ,`ra_id`           INTEGER  NOT NULL
+  ,`email`           VARCHAR(27) NOT NULL
+  ,`year`            INTEGER  NOT NULL
+  ,`semester`        VARCHAR(117) NOT NULL
+  ,`last_name`       VARCHAR(12) NOT NULL
+  ,`middle_name`     VARCHAR(8) NOT NULL
+  ,`first_name`      VARCHAR(9) NOT NULL
+  ,`floor`           INTEGER  NOT NULL
+  ,`building_number` INTEGER  NOT NULL
+  ,`room_number`     INTEGER  NOT NULL
+  ,`phone_number`    VARCHAR(12) NOT NULL
+  ,`perm_address`    VARCHAR(12) NOT NULL
+  PRIMARY KEY (`student_id`),
+  FOREIGN KEY (`rd_id`) REFERENCES `dormhub`.`ResidentDirector` (`rd_id`),
+  FOREIGN KEY (`ra_id`) REFERENCES `dormhub`.`Events` (`ra_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (1,9,15,'hillingsworth0@live.com',2012,'turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus','Illingsworth','Veronike','Hasty',1,1,7895,'522-975-0695','Suite 89');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (2,1,13,'ideverick1@wunderground.com',1994,'adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue','Deverick','Inglis','Isadora',2,2,422,'174-371-9142','Suite 41');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (3,16,7,'rboothe2@hp.com',1987,'interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien','Boothe','Kiel','Raine',3,3,6,'610-183-5299','Apt 1228');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (4,4,16,'sjosefowicz3@guardian.co.uk',2006,'amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus','Josefowicz','Kesley','Sawyere',4,4,97812,'647-583-6383','Apt 620');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (5,17,12,'glongbothom4@nifty.com',1999,'consequat in consequat ut nulla sed accumsan felis ut at dolor','Longbothom','Chariot','Gennie',5,5,67,'268-996-8385','Room 1139');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (6,9,11,'nschild5@dailymotion.com',2008,'ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna','Schild','Rayna','Nixie',6,6,0569,'220-792-8377','Apt 441');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (7,15,9,'aguisler6@g.co',1997,'sit amet lobortis sapien sapien non mi integer ac neque duis','Guisler','Jess','Athena',7,7,3,'116-784-0704','Apt 1510');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (8,19,8,'jladbrooke7@jugem.jp',2003,'non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed','Ladbrooke','Merle','Jason',8,8,91,'909-837-4002','Apt 36');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (9,11,17,'tlysaght8@youtube.com',1994,'et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id','Lysaght','Sandie','Thatch',9,9,0505,'522-632-7898','18th Floor');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (10,12,15,'oshailer9@histats.com',2005,'lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non','Shailer','Malena','Oliviero',10,10,779,'171-399-7934','12th Floor');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (11,11,8,'rbodycotea@arizona.edu',2010,'risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia','Bodycote','Fleur','Remy',11,11,2,'258-526-5276','7th Floor');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (12,17,18,'proddersb@virginia.edu',2006,'et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue','Rodders','Annice','Peg',12,12,8211,'105-863-6893','Apt 1698');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (13,7,14,'cdiessc@zimbio.com',2007,'vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum','Diess','Tedda','Celestyna',13,13,06795,'750-122-8201','Apt 1077');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (14,9,13,'pseamond@sogou.com',2005,'suspendisse ornare consequat lectus in est risus auctor sed tristique in','Seamon','Ira','Patrice',14,14,077,'251-836-2458','Suite 73');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (15,15,4,'iacorye@wp.com',2003,'nisi volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus mauris enim leo','Acory','Osmund','Inessa',15,15,04984,'676-523-0294','10th Floor');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (16,20,14,'gduffettf@cisco.com',2009,'nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac','Duffett','Gilbert','Goldie',16,16,19,'581-767-7952','Apt 818');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (17,6,7,'alacyg@va.gov',1990,'nulla nunc purus phasellus in felis donec semper sapien a','Lacy','Dev','Angel',17,17,983,'202-730-8450','Room 654');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (18,2,20,'hbroadheadh@ted.com',1996,'at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat','Broadhead','Susana','Hasty',18,18,085,'672-876-2029','Room 346');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (19,10,18,'rwilflingeri@mysql.com',2008,'quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent','Wilflinger','Haydon','Raynor',19,19,9421,'303-606-5553','Room 1803');
+INSERT INTO `Residents`(`student_id`,`rd_id`,`ra_id`,`email`,`year`,`semester`,`last_name`,`middle_name`,`first_name`,`floor`,`building_number`,`room_number`,`phone_number`,`perm_address`) VALUES (20,16,14,'rtytj@mozilla.org',2004,'lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit','Tyt','Felicity','Reinaldos',20,20,621,'177-890-7462','PO Box 31407');
+
+CREATE TABLE IF NOT EXISTS `dormhub`.`ResidentRoommates`(
+   `student_id` INTEGER  NOT NULL PRIMARY KEY 
+  ,`roommates`  VARCHAR(125) NOT NULL
+  PRIMARY KEY (`student_id`, `roommates`),
+  FOREIGN KEY (`student_id`) REFERENCES `dormhub`.`Residents` (`student_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (16,'lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (17,'eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (4,'amet eros suspendisse accumsan tortor quis turpis sed ante vivamus');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (19,'duis bibendum morbi non quam nec dui luctus rutrum nulla tellus');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (4,'pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (11,'in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (11,'nec sem duis aliquam convallis nunc proin at turpis a pede posuere');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (10,'nisl duis bibendum felis sed interdum venenatis turpis enim blandit');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (1,'amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (6,'suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (1,'augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (20,'rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (17,'nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (3,'mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (11,'nulla facilisi cras non velit nec nisi vulputate nonummy maecenas');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (16,'nec dui luctus rutrum nulla tellus in sagittis dui vel nisl');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (15,'diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (6,'dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (20,'odio consequat varius integer ac leo pellentesque ultrices mattis odio');
+INSERT INTO `ResidentRoommates`(`student_id`,`roommates`) VALUES (7,'massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero');
+
+CREATE TABLE IF NOT EXISTS `dormhub`.`GroceryList`(
+   `event_id`    INTEGER  NOT NULL PRIMARY KEY 
+  ,`date`        DATE  NOT NULL
+  ,`location`    VARCHAR(12) NOT NULL
+  ,`last_name`   VARCHAR(9) NOT NULL
+  ,`middle_name` VARCHAR(9) NOT NULL
+  ,`first_name`  VARCHAR(8) NOT NULL
+  PRIMARY KEY (`student_id`),
+  FOREIGN KEY (`student_id`) REFERENCES `dormhub`.`Residents` (`student_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Lucilia Bing,'47','32','11/9/2022','sapien','2');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Lizzie Haining,'14','81','11/19/2022','nam','20');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Gwenette Visick,'22','28','3/17/2023','sit','3');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Gena Sterricker,'51','98','3/3/2023','semper','8');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Miner McRobert,'76','98','10/10/2022','commodo','17');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Egan Bilovsky,'19','88','9/22/2022','quis','3');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Bordie Dowrey,'61','79','2/21/2023','lacinia','17');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Crystal Colthard,'91','14','3/30/2023','in','6');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Levon Lightman,'33','52','1/8/2023','erat','6');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Maximilien Atwel,'50','34','10/28/2022','sit','14');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Lanny Burfield,'27','5','1/20/2023','dictumst','11');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Tonnie Hebditch,'73','93','10/17/2022','ante','14');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Laura Ridley,'72','60','9/27/2022','curabitur','13');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Kingston Arsnell,'97','85','11/16/2022','nulla','13');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Nedi Adamiak,'71','74','2/1/2023','ligula','3');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Colleen Viall,'3','100','3/29/2023','erat','19');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Weston Mannooch,'77','2','11/20/2022','ipsum','16');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Dev Beauvais,'87','80','9/22/2022','eget','1');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Marian Spileman,'58','76','4/4/2023','porta','2');
+INSERT INTO `GroceryList`(`event_id`,`date`,`location`,`last_name`,`middle_name`,`first_name`) VALUES (Kristian Delacour,'26','23','9/7/2022','eget','7');
+
+CREATE TABLE IF NOT EXISTS `dormhub`.`ResidentDirector`(
+   `email`           VARCHAR(28) NOT NULL PRIMARY KEY
+  ,`start_date`      DATE  NOT NULL
+  ,`last_name`       VARCHAR(13) NOT NULL
+  ,`middle_name`     VARCHAR(9) NOT NULL
+  ,`first_name`      VARCHAR(9) NOT NULL
+  ,`building_number` INTEGER  NOT NULL
+  ,`perm_address`    VARCHAR(22) NOT NULL
+  ,`ra_id`           INTEGER  NOT NULL
+  ,`rd_id`           INTEGER  NOT NULL
+  PRIMARY KEY (`rd_id`),
+  FOREIGN KEY (`ra_id`) REFERENCES `dormhub`.`WeeklySchedule` (`ra_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('mtreadaway0@51.la','2/17/2023','Treadaway','Shannan','Milly',1,'0 Dunning Court',5,1);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('froly1@so-net.ne.jp','1/16/2023','Roly','Alvie','Frayda',2,'64 Warbler Point',7,2);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('pjeffress2@bing.com','11/21/2022','Jeffress','Curcio','Pancho',3,'8 Kedzie Plaza',15,3);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('vsaull3@businessweek.com','4/13/2023','Saull','Andie','Valentina',4,'215 Westridge Lane',18,4);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('hphilippson4@hugedomains.com','12/4/2022','Philippson','Kelsi','Henrieta',5,'8 Mosinee Drive',10,5);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('kmcbrearty5@clickbank.net','11/1/2022','McBrearty','Tootsie','Keene',6,'8 Lakewood Place',8,6);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('pwiley6@cam.ac.uk','9/11/2022','Wiley','Tory','Prudi',7,'67 Hanson Road',8,7);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('fbedbrough7@geocities.com','11/2/2022','Bedbrough','Codie','Frasco',8,'04 Hansons Circle',5,8);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('hliddiard8@parallels.com','9/18/2022','Liddiard','Bertie','Hoebart',9,'8 Heffernan Street',7,9);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('ivonhelmholtz9@netscape.com','2/3/2023','Von Helmholtz','Saidee','Imojean',10,'90 Sullivan Court',8,10);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('jgreathama@list-manage.com','1/13/2023','Greatham','Shurlocke','Jessie',11,'359 Lakewood Alley',14,11);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('ddurnallb@jalbum.net','12/15/2022','Durnall','Tiff','Doro',12,'212 Debs Street',2,12);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('obukowskic@virginia.edu','3/28/2023','Bukowski','Aluino','Orbadiah',13,'210 Luster Crossing',13,13);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('elinwoodd@cbc.ca','1/5/2023','Linwood','Bennie','Emmit',14,'9116 Express Pass',13,14);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('mgrinvale@zimbio.com','4/21/2023','Grinval','Libbie','Meade',15,'163 Loomis Drive',15,15);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('khaburnef@buzzfeed.com','1/9/2023','Haburne','Kenon','Kaja',16,'126 International Road',7,16);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('njewettg@nature.com','12/5/2022','Jewett','Frankie','Nina',17,'3 Sloan Road',6,17);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('wcunradoh@symantec.com','10/7/2022','Cunrado','Austine','Willyt',18,'332 New Castle Place',20,18);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('hdarkinsi@reverbnation.com','3/30/2023','Darkins','Rourke','Hynda',19,'19 John Wall Alley',11,19);
+INSERT INTO `ResidentDirector`(`email`,`start_date`,`last_name`,`middle_name`,`first_name`,`building_number`,`perm_address`,`ra_id`,`rd_id`) VALUES ('rwarfieldj@chron.com','11/29/2022','Warfield','Dew','Ruby',20,'9 Grover Place',10,20);
 
 
-CREATE TABLE ResidentsRA(
-   ra_id      INTEGER  NOT NULL PRIMARY KEY 
-  ,student_id INTEGER  NOT NULL
-  PRIMARY KEY (student_id),
-  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
-);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (1,17);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (2,11);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (3,17);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (4,11);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (5,13);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (6,6);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (7,13);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (8,15);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (9,11);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (10,15);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (11,4);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (12,18);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (13,1);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (14,16);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (15,3);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (16,2);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (17,20);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (18,20);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (19,13);
-INSERT INTO ResidentsRA(ra_id,student_id) VALUES (20,9);
+CREATE TABLE IF NOT EXISTS `dormhub`.`ResidentInterests`(
+   `student_id` INTEGER  NOT NULL PRIMARY KEY 
+  ,`interests`  VARCHAR(496) NOT NULL
+  PRIMARY KEY (`student_id`, `interests`),
+  FOREIGN KEY (`student_id`) REFERENCES `dormhub`.`Residents` (`student_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
-
-CREATE TABLE Residents(
-   student_id      INTEGER  NOT NULL PRIMARY KEY 
-  ,rd_id           INTEGER  NOT NULL
-  ,ra_id           INTEGER  NOT NULL
-  ,email           VARCHAR(27) NOT NULL
-  ,year            INTEGER  NOT NULL
-  ,semester        VARCHAR(117) NOT NULL
-  ,last_name       VARCHAR(12) NOT NULL
-  ,middle_name     VARCHAR(8) NOT NULL
-  ,first_name      VARCHAR(9) NOT NULL
-  ,floor           INTEGER  NOT NULL
-  ,building_number INTEGER  NOT NULL
-  ,room_number     INTEGER  NOT NULL
-  ,phone_number    VARCHAR(12) NOT NULL
-  ,perm_address    VARCHAR(12) NOT NULL
-  PRIMARY KEY (student_id),
-  FOREIGN KEY (rd_id) REFERENCES ResidentDirector (rd_id),
-  FOREIGN KEY (ra_id) REFERENCES Events (ra_id)
-);
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (1,9,15,'hillingsworth0@live.com',2012,'turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus','Illingsworth','Veronike','Hasty',1,1,7895,'522-975-0695','Suite 89');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (2,1,13,'ideverick1@wunderground.com',1994,'adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue','Deverick','Inglis','Isadora',2,2,422,'174-371-9142','Suite 41');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (3,16,7,'rboothe2@hp.com',1987,'interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien','Boothe','Kiel','Raine',3,3,6,'610-183-5299','Apt 1228');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (4,4,16,'sjosefowicz3@guardian.co.uk',2006,'amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus','Josefowicz','Kesley','Sawyere',4,4,97812,'647-583-6383','Apt 620');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (5,17,12,'glongbothom4@nifty.com',1999,'consequat in consequat ut nulla sed accumsan felis ut at dolor','Longbothom','Chariot','Gennie',5,5,67,'268-996-8385','Room 1139');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (6,9,11,'nschild5@dailymotion.com',2008,'ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna','Schild','Rayna','Nixie',6,6,0569,'220-792-8377','Apt 441');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (7,15,9,'aguisler6@g.co',1997,'sit amet lobortis sapien sapien non mi integer ac neque duis','Guisler','Jess','Athena',7,7,3,'116-784-0704','Apt 1510');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (8,19,8,'jladbrooke7@jugem.jp',2003,'non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed','Ladbrooke','Merle','Jason',8,8,91,'909-837-4002','Apt 36');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (9,11,17,'tlysaght8@youtube.com',1994,'et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id','Lysaght','Sandie','Thatch',9,9,0505,'522-632-7898','18th Floor');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (10,12,15,'oshailer9@histats.com',2005,'lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non','Shailer','Malena','Oliviero',10,10,779,'171-399-7934','12th Floor');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (11,11,8,'rbodycotea@arizona.edu',2010,'risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia','Bodycote','Fleur','Remy',11,11,2,'258-526-5276','7th Floor');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (12,17,18,'proddersb@virginia.edu',2006,'et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue','Rodders','Annice','Peg',12,12,8211,'105-863-6893','Apt 1698');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (13,7,14,'cdiessc@zimbio.com',2007,'vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum','Diess','Tedda','Celestyna',13,13,06795,'750-122-8201','Apt 1077');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (14,9,13,'pseamond@sogou.com',2005,'suspendisse ornare consequat lectus in est risus auctor sed tristique in','Seamon','Ira','Patrice',14,14,077,'251-836-2458','Suite 73');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (15,15,4,'iacorye@wp.com',2003,'nisi volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus mauris enim leo','Acory','Osmund','Inessa',15,15,04984,'676-523-0294','10th Floor');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (16,20,14,'gduffettf@cisco.com',2009,'nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac','Duffett','Gilbert','Goldie',16,16,19,'581-767-7952','Apt 818');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (17,6,7,'alacyg@va.gov',1990,'nulla nunc purus phasellus in felis donec semper sapien a','Lacy','Dev','Angel',17,17,983,'202-730-8450','Room 654');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (18,2,20,'hbroadheadh@ted.com',1996,'at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat','Broadhead','Susana','Hasty',18,18,085,'672-876-2029','Room 346');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (19,10,18,'rwilflingeri@mysql.com',2008,'quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent','Wilflinger','Haydon','Raynor',19,19,9421,'303-606-5553','Room 1803');
-INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (20,16,14,'rtytj@mozilla.org',2004,'lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit','Tyt','Felicity','Reinaldos',20,20,621,'177-890-7462','PO Box 31407');
-
-
-CREATE TABLE ResidentRoommates(
-   student_id INTEGER  NOT NULL PRIMARY KEY 
-  ,roommates  VARCHAR(125) NOT NULL
-  PRIMARY KEY (student_id, roommates),
-  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
-);
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (16,'lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (17,'eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (4,'amet eros suspendisse accumsan tortor quis turpis sed ante vivamus');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (19,'duis bibendum morbi non quam nec dui luctus rutrum nulla tellus');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (4,'pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (11,'in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (11,'nec sem duis aliquam convallis nunc proin at turpis a pede posuere');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (10,'nisl duis bibendum felis sed interdum venenatis turpis enim blandit');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (1,'amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (6,'suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (1,'augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (20,'rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (17,'nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (3,'mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (11,'nulla facilisi cras non velit nec nisi vulputate nonummy maecenas');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (16,'nec dui luctus rutrum nulla tellus in sagittis dui vel nisl');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (15,'diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (6,'dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (20,'odio consequat varius integer ac leo pellentesque ultrices mattis odio');
-INSERT INTO ResidentRoommates(student_id,roommates) VALUES (7,'massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero');
-
-
-CREATE TABLE GroceryList(
-   event_id    INTEGER  NOT NULL PRIMARY KEY 
-  ,date        DATE  NOT NULL
-  ,location    VARCHAR(12) NOT NULL
-  ,last_name   VARCHAR(9) NOT NULL
-  ,middle_name VARCHAR(9) NOT NULL
-  ,first_name  VARCHAR(8) NOT NULL
-  PRIMARY KEY (student_id),
-  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
-);
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Lucilia Bing,'47','32','11/9/2022','sapien','2');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Lizzie Haining,'14','81','11/19/2022','nam','20');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Gwenette Visick,'22','28','3/17/2023','sit','3');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Gena Sterricker,'51','98','3/3/2023','semper','8');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Miner McRobert,'76','98','10/10/2022','commodo','17');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Egan Bilovsky,'19','88','9/22/2022','quis','3');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Bordie Dowrey,'61','79','2/21/2023','lacinia','17');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Crystal Colthard,'91','14','3/30/2023','in','6');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Levon Lightman,'33','52','1/8/2023','erat','6');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Maximilien Atwel,'50','34','10/28/2022','sit','14');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Lanny Burfield,'27','5','1/20/2023','dictumst','11');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Tonnie Hebditch,'73','93','10/17/2022','ante','14');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Laura Ridley,'72','60','9/27/2022','curabitur','13');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Kingston Arsnell,'97','85','11/16/2022','nulla','13');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Nedi Adamiak,'71','74','2/1/2023','ligula','3');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Colleen Viall,'3','100','3/29/2023','erat','19');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Weston Mannooch,'77','2','11/20/2022','ipsum','16');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Dev Beauvais,'87','80','9/22/2022','eget','1');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Marian Spileman,'58','76','4/4/2023','porta','2');
-INSERT INTO GroceryList(event_id,date,location,last_name,middle_name,first_name) VALUES (Kristian Delacour,'26','23','9/7/2022','eget','7');
-
-
-CREATE TABLE ResidentDirector(
-   email           VARCHAR(28) NOT NULL PRIMARY KEY
-  ,start_date      DATE  NOT NULL
-  ,last_name       VARCHAR(13) NOT NULL
-  ,middle_name     VARCHAR(9) NOT NULL
-  ,first_name      VARCHAR(9) NOT NULL
-  ,building_number INTEGER  NOT NULL
-  ,perm_address    VARCHAR(22) NOT NULL
-  ,ra_id           INTEGER  NOT NULL
-  ,rd_id           INTEGER  NOT NULL
-  PRIMARY KEY (rd_id),
-  FOREIGN KEY (ra_id) REFERENCES WeeklySchedule (ra_id)
-);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('mtreadaway0@51.la','2/17/2023','Treadaway','Shannan','Milly',1,'0 Dunning Court',5,1);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('froly1@so-net.ne.jp','1/16/2023','Roly','Alvie','Frayda',2,'64 Warbler Point',7,2);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('pjeffress2@bing.com','11/21/2022','Jeffress','Curcio','Pancho',3,'8 Kedzie Plaza',15,3);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('vsaull3@businessweek.com','4/13/2023','Saull','Andie','Valentina',4,'215 Westridge Lane',18,4);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('hphilippson4@hugedomains.com','12/4/2022','Philippson','Kelsi','Henrieta',5,'8 Mosinee Drive',10,5);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('kmcbrearty5@clickbank.net','11/1/2022','McBrearty','Tootsie','Keene',6,'8 Lakewood Place',8,6);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('pwiley6@cam.ac.uk','9/11/2022','Wiley','Tory','Prudi',7,'67 Hanson Road',8,7);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('fbedbrough7@geocities.com','11/2/2022','Bedbrough','Codie','Frasco',8,'04 Hansons Circle',5,8);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('hliddiard8@parallels.com','9/18/2022','Liddiard','Bertie','Hoebart',9,'8 Heffernan Street',7,9);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('ivonhelmholtz9@netscape.com','2/3/2023','Von Helmholtz','Saidee','Imojean',10,'90 Sullivan Court',8,10);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('jgreathama@list-manage.com','1/13/2023','Greatham','Shurlocke','Jessie',11,'359 Lakewood Alley',14,11);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('ddurnallb@jalbum.net','12/15/2022','Durnall','Tiff','Doro',12,'212 Debs Street',2,12);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('obukowskic@virginia.edu','3/28/2023','Bukowski','Aluino','Orbadiah',13,'210 Luster Crossing',13,13);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('elinwoodd@cbc.ca','1/5/2023','Linwood','Bennie','Emmit',14,'9116 Express Pass',13,14);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('mgrinvale@zimbio.com','4/21/2023','Grinval','Libbie','Meade',15,'163 Loomis Drive',15,15);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('khaburnef@buzzfeed.com','1/9/2023','Haburne','Kenon','Kaja',16,'126 International Road',7,16);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('njewettg@nature.com','12/5/2022','Jewett','Frankie','Nina',17,'3 Sloan Road',6,17);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('wcunradoh@symantec.com','10/7/2022','Cunrado','Austine','Willyt',18,'332 New Castle Place',20,18);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('hdarkinsi@reverbnation.com','3/30/2023','Darkins','Rourke','Hynda',19,'19 John Wall Alley',11,19);
-INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('rwarfieldj@chron.com','11/29/2022','Warfield','Dew','Ruby',20,'9 Grover Place',10,20);
-
-
-CREATE TABLE ResidentInterests(
-   student_id INTEGER  NOT NULL PRIMARY KEY 
-  ,interests  VARCHAR(496) NOT NULL
-  PRIMARY KEY (student_id, interests),
-  FOREIGN KEY (student_id) REFERENCES Residents (student_id)
-);
-INSERT INTO ResidentInterests(student_id,interests) VALUES (7,'Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (16,'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (1,'Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (16,'Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (16,'Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (8,'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (4,'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (3,'Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (3,'Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (12,'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (7,'Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (17,'Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (15,'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (3,'Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (15,'Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (3,'Donec ut mauris eget massa tempor convallis.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (10,'Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (4,'Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (15,'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.');
-INSERT INTO ResidentInterests(student_id,interests) VALUES (2,'Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (7,'Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (16,'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (1,'Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (16,'Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (16,'Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (8,'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (4,'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (3,'Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (3,'Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (12,'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (7,'Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (17,'Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (15,'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (3,'Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (15,'Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (3,'Donec ut mauris eget massa tempor convallis.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (10,'Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (4,'Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (15,'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.');
+INSERT INTO `ResidentInterests`(`student_id`,`interests`) VALUES (2,'Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.');
 
 CREATE TABLE IF NOT EXISTS `dormhub`.`ResidentMajor`(
   `student_id` INTEGER  NOT NULL PRIMARY KEY ,
