@@ -74,24 +74,34 @@ def add_new_songs():
     return 'Success'
 
 # Route3-Put: for the given student and event combo, update the location
-@residents.route('/Calendar/<student_id>/<location>', methods=['PUT'])
-def update_event_location(student_id, location):
-
+@residents.route('/Calendar/<student_id>/<date>/<event>', methods=['PUT'])
+def update_event_location(student_id, date, event):
+    # access json data from requested object
+    current_app.logger.info('Update the info')
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
     cursor = db.get_db().cursor()
 
+    location = req_data['location']
     query = '''
         UPDATE Calendar
-        SET location = ''
-        WHERE ra_id = {0}
-    '''.format(student_id, location)
+        SET location = '{0}'
+        WHERE student_id = '{1}' and date = '{2}' and event = '{3}'
+    '''.format(location, student_id, date, event)
 
+    current_app.logger.info(query)
+
+    # execute the query
     cursor.execute(query)
+    db.get_db().commit()
+
+    return 'Success'
 
 # Route4-Get: Get all of the songs added by the given student as to see what their taste is like
 @residents.route('/SpotifyPlaylist/<student_id>', methods=['GET'])
 def get_songs(student_id):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from SpotifyPlaylist where id = {0}'.format(student_id))
+    cursor.execute('select * from SpotifyPlaylist where student_id = {0}'.format(student_id))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -104,10 +114,22 @@ def get_songs(student_id):
 
 # Route5-Delete: delete the given event that takes place on the given date for the given student
 @residents.route('/Calendar/<student_id>/<date>', methods=['DELETE'])
-def delete_event(student_id):
+def delete_event(student_id, date):
+    # access json data from requested object
+    current_app.logger.info('Update the info')
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
     cursor = db.get_db().cursor()
+
     query = '''
         DELETE FROM Calendar
-        WHERE student_id = {0}
-    '''.format(student_id)
+        WHERE student_id = {0} and date = {1}
+    '''.format(student_id, date)
+
+    current_app.logger.info(query)
+
+    # execute the query
     cursor.execute(query)
+    db.get_db().commit()
+
+    return 'Success'
