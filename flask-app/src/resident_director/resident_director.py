@@ -107,63 +107,100 @@ def add_new_resident():
 #     return jsonify(json_data)
 
 
-#  # Update the start time for an RD
-# @resident_director.route('/WeeklySchedule/<ra_id>/<start_time>', methods=['PUT'])
-# def update_start_time(ra_id, start_time):
-#     cursor = db.get_db().cursor()
-#     # {0}'.format(userID)
-#     query = '''
-#         UPDATE WeeklySchedule
-#         SET start_time = {0}
-#         WHERE ra_id = {0}
-#     '''.format(ra_id, start_time)
-#     cursor.execute(query)
+ # Update the start time for an RD
+@resident_director.route('/WeeklySchedule/<ra_id>/<start_time>', methods=['PUT'])
+def update_start_time(ra_id, start_time):
+    cursor = db.get_db().cursor()
+    # {0}'.format(userID)
+    query = '''
+        UPDATE WeeklySchedule
+        SET start_time = {0}
+        WHERE ra_id = {0}
+    '''.format(ra_id, start_time)
+    cursor.execute(query)
 
-# #updates the ra for a given student
-# @resident_director.route('/Residents/<student_id>/<ra_id>', methods=['PUT'])
-# def update_ra(student_id, ra_id):
-#     cursor = db.get_db().cursor()
-#     query = '''
-#         UPDATE Residents
-#         SET ra_id = {0}
-#         WHERE student_id = {0}
-#     '''.format(ra_id, student_id)
-#     cursor.execute(query)
+    db.get_db().commit()
+
+    return 'Success'
+
+#updates the ra for a given student
+@resident_director.route('/Residents/<student_id>/<ra_id>', methods=['PUT'])
+def update_ra(student_id, ra_id):
+    cursor = db.get_db().cursor()
+    query = '''
+        UPDATE Residents
+        SET ra_id = {0}
+        WHERE student_id = {0}
+    '''.format(ra_id, student_id)
+    cursor.execute(query)
+
+    db.get_db().commit()
+
+    return 'Success'
 
 #deletes the ra for a given weekly schedule
-# @resident_director.route('/WeeklySchedule/<ra_id>', methods=['DELETE'])
-# def update_ra(ra_id):
-#     cursor = db.get_db().cursor()
-#     query = '''
-#         DELETE FROM WeeklySchedule
-#         WHERE ra_id = {0}
-#     '''.format(ra_id)
-#     cursor.execute(query)
+@resident_director.route('/WeeklySchedule/<ra_id>', methods=['DELETE'])
+def update_ra(ra_id):
+    cursor = db.get_db().cursor()
+    query = '''
+        DELETE FROM WeeklySchedule
+        WHERE ra_id = {0}
+    '''.format(ra_id)
+    cursor.execute(query)
+
+    db.get_db().commit()
+
+    return 'Success'
 
 #deletes the a student from the residents (they might move out for ex.)
-# @resident_director.route('/Residents/<student_id>', methods=['DELETE'])
-# def update_ra(student_id):
-#     cursor = db.get_db().cursor()
-#     query = '''
-#         DELETE FROM Residents
-#         WHERE student_id = {0}
-#     '''.format(student_id)
-#     cursor.execute(query)
+@resident_director.route('/Residents/<student_id>', methods=['DELETE'])
+def update_ra(student_id):
+    cursor = db.get_db().cursor()
+    query = '''
+        DELETE FROM Residents
+        WHERE student_id = {0}
+    '''.format(student_id)
+    cursor.execute(query)
 
-# Get all the start times for a resident director 
-# @resident_director.route('/getStartTimes', methods=['GET'])
-# def get_products():
-#     # get a cursor object from the database
-#     cursor = db.get_db().cursor()
+    db.get_db().commit()
 
-#     # use cursor to query the database for a list of products
-#     cursor.execute('SELECT start_time FROM WeeklySchedule')
+    return 'Success'
 
-# # Get all the years for Residents
-# @resident_director.route('/getResidentYears', methods=['GET'])
-# def get_products():
-#     # get a cursor object from the database
-#     cursor = db.get_db().cursor()
+#Get all the start times for a resident director 
+@resident_director.route('/getStartTimes', methods=['GET'])
+def get_products():
+    
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
 
-#     # use cursor to query the database for a list of products
-#     cursor.execute('SELECT year FROM Residents')
+    # use cursor to query the database for a list of products
+    cursor.execute('SELECT start_time FROM WeeklySchedule')
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+# Get all the years for Residents
+@resident_director.route('/getResidentYears', methods=['GET'])
+def get_products():
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+
+    # use cursor to query the database for a list of products
+    cursor.execute('SELECT year FROM Residents')
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
