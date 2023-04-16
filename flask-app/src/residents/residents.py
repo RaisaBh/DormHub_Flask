@@ -113,8 +113,8 @@ def get_songs(student_id):
     return the_response
 
 # Route5-Delete: delete the given event that takes place on the given date for the given student
-@residents.route('/Calendar/<student_id>/<date>', methods=['DELETE'])
-def delete_event(student_id, date):
+@residents.route('/Calendar/<student_id>/<date>/location', methods=['DELETE'])
+def delete_event(student_id, date, location):
     # access json data from requested object
     current_app.logger.info('Update the info')
     req_data = request.get_json()
@@ -123,8 +123,8 @@ def delete_event(student_id, date):
 
     query = '''
         DELETE FROM Calendar
-        WHERE student_id = {0} and date = {1}
-    '''.format(student_id, date)
+        WHERE student_id = {0} and date = {1} and location = {2}
+    '''.format(student_id, date, location)
 
     current_app.logger.info(query)
 
