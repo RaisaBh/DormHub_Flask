@@ -40,5 +40,81 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "762e2e0b-b70c-4397-8ed2-b76d6a71a628",
+    "colId": "fb005cb8-ab08-4b93-907f-5dbbff1ccac1",
+    "containerId": "",
+    "name": "add_new_resident",
+    "url": "localhost:8001/rd/resident",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-04-16T23:20:59.653Z",
+    "modified": "2023-04-16T23:33:34.670Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"student_id\": 21, \n  \"rd_id\": 8, \n  \"ra_id\": 12, \n  \"email\": \"batson.bil@h.edu\",\n  \"year\": 2023, \n  \"semester\": \"Fall 2023\", \n  \"last_name\": \"Batson\", \n  \"middle_name\": \"Shazam\", \n  \"first_name\": \"Billy\", \n  \"floor\": 3, \n  \"building_number\": 4, \n  \"room_number\": 231, \n  \"phone_number\": \"123-456-7890\", \n  \"perm_address\": \"12 Philly\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "cc2bd9c9-7556-4129-9e6e-fc1e36ee1721",
+    "colId": "fb005cb8-ab08-4b93-907f-5dbbff1ccac1",
+    "containerId": "",
+    "name": "add_second_new_resident",
+    "url": "localhost:8001/rd/resident",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-04-16T23:34:16.995Z",
+    "modified": "2023-04-16T23:40:49.937Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"student_id\": 22, \n  \"rd_id\": 1, \n  \"ra_id\": 19, \n  \"email\": \"kent.cl@h.edu\",\n  \"year\": 2022, \n  \"semester\": \"Spring 2022\", \n  \"last_name\": \"Kent\", \n  \"middle_name\": \"Superman\", \n  \"first_name\": \"Clark\", \n  \"floor\": 9, \n  \"building_number\": 12, \n  \"room_number\": 477, \n  \"phone_number\": \"098-765-4321\", \n  \"perm_address\": \"19 Kansas\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "0c7da5b2-1c78-4973-8c3e-b78125668ca0",
+    "colId": "fb005cb8-ab08-4b93-907f-5dbbff1ccac1",
+    "containerId": "",
+    "name": "add_new_shift",
+    "url": "localhost:8001/rd/weekly_schedule",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-04-16T23:41:04.914Z",
+    "modified": "2023-04-17T00:00:10.315Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"days_on_shift\": \"Monday\",\n  \"start_time\": \"9:30 AM\", \n  \"end_time\": \"6:00 PM\", \n  \"ra_id\": 21\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "062b891d-d0c0-4a06-be77-40dc75ab06e7",
+    "colId": "fb005cb8-ab08-4b93-907f-5dbbff1ccac1",
+    "containerId": "",
+    "name": "add_second_new_shift",
+    "url": "localhost:8001/rd/weekly_schedule",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2023-04-17T00:00:28.441Z",
+    "modified": "2023-04-17T00:01:54.214Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"days_on_shift\": \"Sun-Fri\",\n  \"start_time\": \"11:30 AM\", \n  \"end_time\": \"9:00 PM\", \n  \"ra_id\": 22\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
