@@ -7,7 +7,7 @@ residents = Blueprint('residents', __name__)
 # residents Blueprint
     # Route 1(check): /ResidentInterests → Post
     # Route 2(check): /SpotifyPlaylist → Post
-    # Route 3: /Calendar/{event}/{student_id}/{location} → Put
+    # Route 3(check): /Calendar/{event}/{student_id}/{location} → Put
     # Route 4(check): /SpotifyPlaylist/{student_id} → Get
     # Route 5(check): /Calendar/{event}/{student_id}/{date} → Delete 
     # Route 6(check): /ResidentMajor/{student_id} → Delete
@@ -100,7 +100,7 @@ def update_event_location():
 
     return 'Success'
 
-# Route4-Get: Get all of the songs added by the given student as to see what their taste is like
+# Route4-Get: Get all of the songs by the given student as to see what their taste is like
 @residents.route('/SpotifyPlaylist/<student_id>', methods=['GET'])
 def get_songs(student_id):
     cursor = db.get_db().cursor()
