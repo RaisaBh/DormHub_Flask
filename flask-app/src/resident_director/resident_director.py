@@ -168,7 +168,7 @@ def update_ra(student_id, ra_id):
 
 #deletes the ra for a given weekly schedule
 @resident_director.route('/WeeklySchedule/<ra_id>', methods=['DELETE'])
-def update_ra(ra_id):
+def delete_ra(ra_id):
     cursor = db.get_db().cursor()
     query = '''
         DELETE FROM WeeklySchedule
@@ -182,7 +182,7 @@ def update_ra(ra_id):
 
 #deletes the a student from the residents (they might move out for ex.)
 @resident_director.route('/Residents/<student_id>', methods=['DELETE'])
-def update_ra(student_id):
+def delete_student(student_id):
     cursor = db.get_db().cursor()
     query = '''
         DELETE FROM Residents
@@ -196,7 +196,7 @@ def update_ra(student_id):
 
 #Get all the start times for a resident director 
 @resident_director.route('/getStartTimes', methods=['GET'])
-def get_products():
+def get_start_times():
     
     # get a cursor object from the database
     cursor = db.get_db().cursor()
@@ -216,7 +216,7 @@ def get_products():
 
 # Get all the years for Residents
 @resident_director.route('/getResidentYears', methods=['GET'])
-def get_products():
+def get_resident_years():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
