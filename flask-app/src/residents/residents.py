@@ -76,28 +76,24 @@ def add_new_songs():
 # Route3-Put: for the given student and event combo, update the location
 @residents.route('/Calendar/update', methods=['PUT'])
 def update_event_location():
-    
+    cursor = db.get_db().cursor()
+
     # access json data from requested object
     current_app.logger.info('Update the info')
 
+    location = request.args.get('location')
     student_id = request.args.get('student_id')
     date = request.args.get('date')
     event = request.args.get('event')
 
-    req_data = request.get_json()
-    current_app.logger.info(req_data)
+    current_app.logger.info(location)
     current_app.logger.info(student_id)
     current_app.logger.info(date)
     current_app.logger.info(event)
 
-    location = req_data['location']
-
     query = 'UPDATE Calendar SET location = ' + location + ' WHERE student_id = ' + str(student_id) + ' AND date = ' + date + ' AND event = ' + event
 
-    current_app.logger.info(query)
-
     # execute the query
-    cursor = db.get_db().cursor()
     cursor.execute(query)
 
     db.get_db().commit()
@@ -139,6 +135,21 @@ def delete_event():
 
     return 'Success'
 
+# Route6-Delete: Deletes a given song by the given artist 
+@residents.route('/SpotifyPlaylist/delete', methods=['DELETE'])
+def delete_song():
+    current_app.logger.info('Processing form data')
+    song = request.args.get('song')
+    artist = request.args.get('artist')
+    current_app.logger.info(song)
+    current_app.logger.info(artist)
+
+    cursor = db.get_db().cursor()
+    cursor.execute('DELETE FROM SpotifyPlaylist where artist = ' + artist + 'AND song = ' + song)
+    db.get_db().commit()
+
+    return 'Success'
+
 # Route7-Get: Gets all the interests for a given student
 @residents.route('/resident_interests/<student_id>', methods=['GET'])
 def get_interests(student_id):
@@ -154,7 +165,7 @@ def get_interests(student_id):
     the_response.mimetype = 'application/json'
     return the_response
 
-# Gets all the songs by a given artist 
+# Route8-Get: Gets all the songs by a given artist 
 @residents.route('/SpotifyPlaylist/artist', methods=['GET'])
 def get_songs_by_artist():
     current_app.logger.info('Processing form data')
@@ -172,18 +183,3 @@ def get_songs_by_artist():
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
-
-# Deletes a given song by the given artist 
-@residents.route('/SpotifyPlaylist/delete', methods=['DELETE'])
-def delete_song():
-    current_app.logger.info('Processing form data')
-    song = request.args.get('song')
-    artist = request.args.get('artist')
-    current_app.logger.info(song)
-    current_app.logger.info(artist)
-
-    cursor = db.get_db().cursor()
-    cursor.execute('DELETE FROM SpotifyPlaylist where artist = ' + artist + 'AND song = ' + song)
-    db.get_db().commit()
-
-    return 'Success'

@@ -190,24 +190,13 @@
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
     "name": "Route 4: update new ra for a resident",
-    "url": "localhost:8001/rd/Residents/?student_id=3&ra_id=4",
+    "url": "localhost:8001/rd/Residents/1/1",
     "method": "PUT",
     "sortNum": 80000,
     "created": "2023-04-17T01:53:27.099Z",
-    "modified": "2023-04-17T03:28:06.941Z",
+    "modified": "2023-04-17T01:54:36.957Z",
     "headers": [],
-    "params": [
-      {
-        "name": "student_id",
-        "value": "3",
-        "isPath": false
-      },
-      {
-        "name": "ra_id",
-        "value": "4",
-        "isPath": false
-      }
-    ],
+    "params": [],
     "tests": []
   },
   {
@@ -215,24 +204,13 @@
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
     "name": "Route 3: update start time",
-    "url": "localhost:8001/rd/WeeklySchedule/?ra_id=7&start_time='4:00'",
+    "url": "localhost:8001/rdWeeklySchedule/1/1:35",
     "method": "PUT",
     "sortNum": 90000,
     "created": "2023-04-17T01:57:06.712Z",
-    "modified": "2023-04-17T03:33:21.808Z",
+    "modified": "2023-04-17T01:57:25.041Z",
     "headers": [],
-    "params": [
-      {
-        "name": "ra_id",
-        "value": "7",
-        "isPath": false
-      },
-      {
-        "name": "start_time",
-        "value": "'4:00'",
-        "isPath": false
-      }
-    ],
+    "params": [],
     "tests": []
   },
   {
@@ -378,16 +356,16 @@
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
     "name": "Route 5.2: delete RA from weekly schedule",
-    "url": "localhost:8001/rd/WeeklySchedule/delete?ra_id=7",
+    "url": "localhost:8001/rd/WeeklySchedule/delete?ra_id=2",
     "method": "DELETE",
     "sortNum": 70000,
     "created": "2023-04-17T02:44:17.789Z",
-    "modified": "2023-04-17T03:35:50.557Z",
+    "modified": "2023-04-17T02:44:37.572Z",
     "headers": [],
     "params": [
       {
         "name": "ra_id",
-        "value": "7",
+        "value": "2",
         "isPath": false
       }
     ],
@@ -398,24 +376,13 @@
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
     "name": "Route 4.2: update new ra for a resident",
-    "url": "localhost:8001/rd/Residents/?student_id=4&ra_id=2",
+    "url": "localhost:8001/rd/Residents/1/1",
     "method": "PUT",
     "sortNum": 85000,
     "created": "2023-04-17T02:46:01.873Z",
-    "modified": "2023-04-17T03:25:14.902Z",
+    "modified": "2023-04-17T02:46:01.873Z",
     "headers": [],
-    "params": [
-      {
-        "name": "student_id",
-        "value": "4",
-        "isPath": false
-      },
-      {
-        "name": "ra_id",
-        "value": "2",
-        "isPath": false
-      }
-    ],
+    "params": [],
     "tests": []
   },
   {
@@ -484,16 +451,16 @@
     "colId": "a8c9a20f-4084-40fe-87f9-a23a651307a1",
     "containerId": "",
     "name": "put",
-    "url": "localhost:8001/r/Calendar/update?student_id=6&date='10/26/2022'&event='Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.'",
+    "url": "localhost:8001/r/Calendar/update?location='curry center'&date='10/26/2022'&event='Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.'&student_id=6",
     "method": "PUT",
     "sortNum": 60000,
     "created": "2023-04-17T03:14:36.003Z",
-    "modified": "2023-04-17T03:17:46.875Z",
+    "modified": "2023-04-17T03:45:06.172Z",
     "headers": [],
     "params": [
       {
-        "name": "student_id",
-        "value": "6",
+        "name": "location",
+        "value": "'curry center'",
         "isPath": false
       },
       {
@@ -505,35 +472,10 @@
         "name": "event",
         "value": "'Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.'",
         "isPath": false
-      }
-    ],
-    "body": {
-      "type": "json",
-      "raw": "{\n  \"location\": \"Curry Center\"\n}",
-      "form": []
-    },
-    "tests": []
-  },
-  {
-    "_id": "47f0d840-f884-4c44-82eb-351527354107",
-    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
-    "containerId": "",
-    "name": "Route 3.2: update start time",
-    "url": "localhost:8001/rd/WeeklySchedule/?ra_id=3&start_time='4:55'",
-    "method": "PUT",
-    "sortNum": 100000,
-    "created": "2023-04-17T03:26:35.668Z",
-    "modified": "2023-04-17T03:27:44.680Z",
-    "headers": [],
-    "params": [
-      {
-        "name": "ra_id",
-        "value": "3",
-        "isPath": false
       },
       {
-        "name": "start_time",
-        "value": "'4:55'",
+        "name": "student_id",
+        "value": "6",
         "isPath": false
       }
     ],
