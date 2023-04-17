@@ -116,5 +116,47 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "eb0938d5-99d7-4d26-9748-c6bdc6ba934f",
+    "colId": "007ed817-a862-4f86-9426-c90712eaaea1",
+    "containerId": "",
+    "name": "get_interests_from_student3",
+    "url": "localhost:8001/r/resident_interests/3",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-04-17T00:13:52.512Z",
+    "modified": "2023-04-17T00:15:20.646Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "8f50b672-7ec3-4d84-a43f-e02020c837af",
+    "colId": "007ed817-a862-4f86-9426-c90712eaaea1",
+    "containerId": "",
+    "name": "get_interests_from_student16",
+    "url": "localhost:8001/r/resident_interests/16",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-04-17T00:18:48.844Z",
+    "modified": "2023-04-17T00:18:56.342Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "075ae580-0487-4992-8490-6a205bf70b78",
+    "colId": "007ed817-a862-4f86-9426-c90712eaaea1",
+    "containerId": "",
+    "name": "get_songs_by_kelsey_kingsbury",
+    "url": "localhost:8001/r/SpotifyPlaylist/'Kelsey Kingsbury'",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2023-04-17T00:23:42.942Z",
+    "modified": "2023-04-17T00:47:19.985Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

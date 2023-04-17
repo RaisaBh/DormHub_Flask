@@ -133,3 +133,33 @@ def delete_event(student_id, date, location):
     db.get_db().commit()
 
     return 'Success'
+
+# Gets all the interests for a given student
+@residents.route('/resident_interests/<student_id>', methods=['GET'])
+def get_interests(student_id):
+    cursor = db.get_db().cursor()
+    cursor.execute('select * from ResidentInterests where student_id = {0}'.format(student_id))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+# Gets all the songs by a given artist 
+@residents.route('/SpotifyPlaylist/<artist>', methods=['GET'])
+def get_songs_by_artist(artist):
+    cursor = db.get_db().cursor()
+    cursor.execute('select * from SpotifyPlaylist where artist = {0}'.format(artist))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
