@@ -118,34 +118,6 @@
     "tests": []
   },
   {
-    "_id": "0573e98a-d610-4ef2-b5de-8340994b15eb",
-    "colId": "928b183e-d148-4ed2-ba8b-b34c385ef2cf",
-    "containerId": "",
-    "name": "Route 3: put start time (weeklySchedule)",
-    "url": "localhost:8001/rd/WeeklySchedule/1/1:45",
-    "method": "PUT",
-    "sortNum": 20000,
-    "created": "2023-04-17T00:45:38.418Z",
-    "modified": "2023-04-17T00:50:26.546Z",
-    "headers": [],
-    "params": [],
-    "tests": []
-  },
-  {
-    "_id": "4ced1885-44d8-4c99-a4e4-3365f76e2524",
-    "colId": "928b183e-d148-4ed2-ba8b-b34c385ef2cf",
-    "containerId": "",
-    "name": "Route 8: get resident year",
-    "url": "localhost:8001/rd/getResidentYears",
-    "method": "GET",
-    "sortNum": 30000,
-    "created": "2023-04-17T00:50:58.800Z",
-    "modified": "2023-04-17T00:52:17.215Z",
-    "headers": [],
-    "params": [],
-    "tests": []
-  },
-  {
     "_id": "10ba7830-0a54-439e-bedc-6b9d5e3870f7",
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
