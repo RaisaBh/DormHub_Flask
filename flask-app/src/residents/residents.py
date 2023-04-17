@@ -150,10 +150,14 @@ def get_interests(student_id):
     return the_response
 
 # Gets all the songs by a given artist 
-@residents.route('/SpotifyPlaylist/<artist>', methods=['GET'])
-def get_songs_by_artist(artist):
+@residents.route('/SpotifyPlaylist/artist', methods=['GET'])
+def get_songs_by_artist():
+    current_app.logger.info('Processing form data')
+    req_data = request.args.get('artist')
+    current_app.logger.info(req_data)
+
     cursor = db.get_db().cursor()
-    cursor.execute('select * from SpotifyPlaylist where artist = {0}'.format(artist))
+    cursor.execute('select * from SpotifyPlaylist where artist = ' + req_data)
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -163,3 +167,18 @@ def get_songs_by_artist(artist):
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
+
+# Deletes a given song by the given artist 
+@residents.route('/SpotifyPlaylist/delete', methods=['DELETE'])
+def delete_song():
+    current_app.logger.info('Processing form data')
+    song = request.args.get('song')
+    artist = request.args.get('artist')
+    current_app.logger.info(song)
+    current_app.logger.info(artist)
+
+    cursor = db.get_db().cursor()
+    cursor.execute('DELETE FROM SpotifyPlaylist where artist = ' + artist + 'AND song = ' + song)
+    db.get_db().commit()
+
+    return 'Success'
