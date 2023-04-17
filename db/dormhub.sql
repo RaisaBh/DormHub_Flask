@@ -3,7 +3,7 @@ CREATE DATABASE dormhub;
 USE dormhub;
 
 CREATE TABLE WeeklySchedule(
-    days_on_shift VARCHAR(10)  NOT NULL
+    days_on_shift  VARCHAR(10)  NOT NULL
     ,start_time    VARCHAR(8) NOT NULL
     ,end_time      VARCHAR(8) NOT NULL
     ,ra_id         INTEGER  NOT NULL,
