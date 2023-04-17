@@ -5,14 +5,14 @@ from src import db
 residents = Blueprint('residents', __name__)
 
 # residents Blueprint
-    # Route 1: /ResidentInterests → Post
-    # Route 2: /SpotifyPlaylist → Post
+    # Route 1(check): /ResidentInterests → Post
+    # Route 2(check): /SpotifyPlaylist → Post
     # Route 3: /Calendar/{event}/{student_id}/{location} → Put
-    # Route 4: /SpotifyPlaylist/{student_id} → Get
+    # Route 4(check): /SpotifyPlaylist/{student_id} → Get
     # Route 5: /Calendar/{event}/{student_id}/{date} → Delete 
     # Route 6: /ResidentMajor/{student_id} → Delete
-    # Route 7: /ResidentInterests/{student_id} → Get
-    # Route 8: /SpotifyPlaylist/{artist} → Get
+    # Route 7(check): /ResidentInterests/{student_id} → Get
+    # Route 8(check): /SpotifyPlaylist/{artist} → Get
 
 # Route1-Post: Add a new interest for the given student
 @residents.route('/addNewInterest', methods=['POST'])
@@ -134,7 +134,7 @@ def delete_event(student_id, date, location):
 
     return 'Success'
 
-# Gets all the interests for a given student
+# Route7-Get: Gets all the interests for a given student
 @residents.route('/resident_interests/<student_id>', methods=['GET'])
 def get_interests(student_id):
     cursor = db.get_db().cursor()
@@ -150,12 +150,8 @@ def get_interests(student_id):
     return the_response
 
 # Gets all the songs by a given artist 
-@residents.route('/SpotifyPlaylist/artist', methods=['GET'])
-def get_songs_by_artist():
-    current_app.logger.info('Processing form data')
-    req_data = request.args.get('artist')
-    current_app.logger.info(req_data)
-
+@residents.route('/SpotifyPlaylist/<artist>', methods=['GET'])
+def get_songs_by_artist(artist):
     cursor = db.get_db().cursor()
     cursor.execute('select * from SpotifyPlaylist where artist = ' + req_data)
     row_headers = [x[0] for x in cursor.description]
