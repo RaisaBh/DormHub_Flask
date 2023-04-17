@@ -150,10 +150,14 @@ def get_interests(student_id):
     return the_response
 
 # Gets all the songs by a given artist 
-@residents.route('/SpotifyPlaylist/<artist>', methods=['GET'])
-def get_songs_by_artist(artist):
+@residents.route('/SpotifyPlaylist/artist', methods=['GET'])
+def get_songs_by_artist():
+    current_app.logger.info('Processing form data')
+    artist = request.args.get('artist')
+    current_app.logger.info(artist)
+
     cursor = db.get_db().cursor()
-    cursor.execute('select * from SpotifyPlaylist where artist = ' + req_data)
+    cursor.execute('select * from SpotifyPlaylist where artist = ' + artist)
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
