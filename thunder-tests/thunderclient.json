@@ -148,13 +148,24 @@
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
     "name": "Route 4.1: update new ra for a resident",
-    "url": "localhost:8001/rd/Residents/1/1",
+    "url": "localhost:8001/rd/Residents/?student_id=2&ra_id=4",
     "method": "PUT",
     "sortNum": 45000,
     "created": "2023-04-17T01:53:27.099Z",
-    "modified": "2023-04-17T04:04:05.183Z",
+    "modified": "2023-04-17T17:25:12.213Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "student_id",
+        "value": "2",
+        "isPath": false
+      },
+      {
+        "name": "ra_id",
+        "value": "4",
+        "isPath": false
+      }
+    ],
     "tests": []
   },
   {
@@ -162,13 +173,24 @@
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
     "name": "Route 3.1: update start time",
-    "url": "localhost:8001/rdWeeklySchedule/1/1:35",
+    "url": "localhost:8001/rd/WeeklySchedule/?ra_id=1&start_time='1:45'",
     "method": "PUT",
     "sortNum": 30000,
     "created": "2023-04-17T01:57:06.712Z",
-    "modified": "2023-04-17T04:04:02.782Z",
+    "modified": "2023-04-17T17:24:13.848Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "ra_id",
+        "value": "1",
+        "isPath": false
+      },
+      {
+        "name": "start_time",
+        "value": "'1:45'",
+        "isPath": false
+      }
+    ],
     "tests": []
   },
   {
@@ -327,20 +349,6 @@
         "isPath": false
       }
     ],
-    "tests": []
-  },
-  {
-    "_id": "11d10a6c-c3bd-46e8-90a1-7eda7f711004",
-    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
-    "containerId": "",
-    "name": "Route 4.2: update new ra for a resident",
-    "url": "localhost:8001/rd/Residents/1/1",
-    "method": "PUT",
-    "sortNum": 52500,
-    "created": "2023-04-17T02:46:01.873Z",
-    "modified": "2023-04-17T04:04:07.166Z",
-    "headers": [],
-    "params": [],
     "tests": []
   },
   {
@@ -572,6 +580,56 @@
       {
         "name": "event",
         "value": "'Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia.'",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "ddccb1ea-a7c9-4f32-b123-4b57b66bd6b3",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 3.2: update start time",
+    "url": "localhost:8001/rd/WeeklySchedule/?ra_id=2&start_time='4:00'",
+    "method": "PUT",
+    "sortNum": 37500,
+    "created": "2023-04-17T17:24:18.510Z",
+    "modified": "2023-04-17T17:24:43.045Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "ra_id",
+        "value": "2",
+        "isPath": false
+      },
+      {
+        "name": "start_time",
+        "value": "'4:00'",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "d8151623-8708-473b-95b0-3d110616258a",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 4.2: update new ra for a resident",
+    "url": "localhost:8001/rd/Residents/?student_id=5&ra_id=2",
+    "method": "PUT",
+    "sortNum": 48750,
+    "created": "2023-04-17T17:25:20.143Z",
+    "modified": "2023-04-17T17:25:36.898Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "student_id",
+        "value": "5",
+        "isPath": false
+      },
+      {
+        "name": "ra_id",
+        "value": "2",
         "isPath": false
       }
     ],
