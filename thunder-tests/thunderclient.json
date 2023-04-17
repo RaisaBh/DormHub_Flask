@@ -370,5 +370,19 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "11d10a6c-c3bd-46e8-90a1-7eda7f711004",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 4.2: update new ra for a resident",
+    "url": "localhost:8001/rd/Residents/1/1",
+    "method": "PUT",
+    "sortNum": 85000,
+    "created": "2023-04-17T02:46:01.873Z",
+    "modified": "2023-04-17T02:46:01.873Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
