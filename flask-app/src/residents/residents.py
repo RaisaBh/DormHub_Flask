@@ -9,8 +9,8 @@ residents = Blueprint('residents', __name__)
     # Route 2(check): /SpotifyPlaylist → Post
     # Route 3: /Calendar/{event}/{student_id}/{location} → Put
     # Route 4(check): /SpotifyPlaylist/{student_id} → Get
-    # Route 5: /Calendar/{event}/{student_id}/{date} → Delete 
-    # Route 6: /ResidentMajor/{student_id} → Delete
+    # Route 5(check): /Calendar/{event}/{student_id}/{date} → Delete 
+    # Route 6(check): /ResidentMajor/{student_id} → Delete
     # Route 7(check): /ResidentInterests/{student_id} → Get
     # Route 8(check): /SpotifyPlaylist/{artist} → Get
 
@@ -74,25 +74,32 @@ def add_new_songs():
     return 'Success'
 
 # Route3-Put: for the given student and event combo, update the location
-@residents.route('/Calendar/<student_id>/<date>/<event>', methods=['PUT'])
-def update_event_location(student_id, date, event):
+@residents.route('/Calendar/update', methods=['PUT'])
+def update_event_location():
+    
     # access json data from requested object
     current_app.logger.info('Update the info')
+
+    student_id = request.args.get('student_id')
+    date = request.args.get('date')
+    event = request.args.get('event')
+
     req_data = request.get_json()
     current_app.logger.info(req_data)
-    cursor = db.get_db().cursor()
+    current_app.logger.info(student_id)
+    current_app.logger.info(date)
+    current_app.logger.info(event)
 
     location = req_data['location']
-    query = '''
-        UPDATE Calendar
-        SET location = '{0}'
-        WHERE student_id = '{1}' and date = '{2}' and event = '{3}'
-    '''.format(location, student_id, date, event)
+
+    query = 'UPDATE Calendar SET location = ' + location + ' WHERE student_id = ' + str(student_id) + ' AND date = ' + date + ' AND event = ' + event
 
     current_app.logger.info(query)
 
     # execute the query
+    cursor = db.get_db().cursor()
     cursor.execute(query)
+
     db.get_db().commit()
 
     return 'Success'
