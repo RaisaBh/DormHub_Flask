@@ -118,29 +118,16 @@ def delete_event():
     current_app.logger.info('delete data')
     student_id = request.args.get('student_id')
     date = request.args.get('date')
-    location = request.args.get('location')
+    event = request.args.get('event')
     current_app.logger.info(student_id)
     current_app.logger.info(date)
-    current_app.logger.info(location)
+    current_app.logger.info(event)
     cursor = db.get_db().cursor()
 
-    query = 'DELETE FROM Calendar WHERE student_id = ' + str(student_id) + 'AND date = ' + date + 'AND location = ' + location
-
+    query = 'DELETE FROM Calendar WHERE student_id = ' + str(student_id) + ' AND date = ' + date + ' AND event = ' + event
+    cursor.execute(query)
+    
     current_app.logger.info(query)
-    db.get_db().commit()
-
-    return 'Success'
-
-@residents.route('/SpotifyPlaylist/delete', methods=['DELETE'])
-def delete_song():
-    current_app.logger.info('Processing form data')
-    song = request.args.get('song')
-    artist = request.args.get('artist')
-    current_app.logger.info(song)
-    current_app.logger.info(artist)
-
-    cursor = db.get_db().cursor()
-    cursor.execute('DELETE FROM SpotifyPlaylist where artist = ' + artist + 'AND song = ' + song)
     db.get_db().commit()
 
     return 'Success'
