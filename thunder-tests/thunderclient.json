@@ -144,5 +144,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "10ba7830-0a54-439e-bedc-6b9d5e3870f7",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 8: Get resident year",
+    "url": "localhost:8001/rd/getResidentYear",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-04-17T01:04:47.507Z",
+    "modified": "2023-04-17T01:05:03.725Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
