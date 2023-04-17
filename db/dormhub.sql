@@ -74,6 +74,7 @@ CREATE TABLE ResidentDirector(
                                  PRIMARY KEY (rd_id),
                                  FOREIGN KEY (ra_id) REFERENCES WeeklySchedule (ra_id)
                                  ON DELETE CASCADE
+                                 ON UPDATE CASCADE
 );
 INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('mtreadaway0@51.la','2/17/2023','Treadaway','Shannan','Milly',1,'0 Dunning Court',5,1);
 INSERT INTO ResidentDirector(email,start_date,last_name,middle_name,first_name,building_number,perm_address,ra_id,rd_id) VALUES ('froly1@so-net.ne.jp','1/16/2023','Roly','Alvie','Frayda',2,'64 Warbler Point',7,2);
@@ -113,9 +114,11 @@ CREATE TABLE Residents(
     ,perm_address    VARCHAR(12) NOT NULL,
                           PRIMARY KEY (student_id),
                           FOREIGN KEY (rd_id) REFERENCES ResidentDirector (rd_id)
-                          ON DELETE CASCADE,
+                          ON DELETE CASCADE
+                          ON UPDATE CASCADE,
                           FOREIGN KEY (ra_id) REFERENCES WeeklySchedule (ra_id)
                           ON DELETE CASCADE
+                          ON UPDATE CASCADE
 );
 INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (1,9,15,'hillingsworth0@live.com',2012,'turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus','Illingsworth','Veronike','Hasty',1,1,7895,'522-975-0695','Suite 89');
 INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (2,1,13,'ideverick1@wunderground.com',1994,'adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue','Deverick','Inglis','Isadora',2,2,422,'174-371-9142','Suite 41');
@@ -144,6 +147,7 @@ CREATE TABLE ResidentRoommates(
                                   PRIMARY KEY (student_id, roommates),
                                   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
                                   ON DELETE CASCADE
+                                  ON UPDATE CASCADE
 );
 INSERT INTO ResidentRoommates(student_id,roommates) VALUES (16,'lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum');
 INSERT INTO ResidentRoommates(student_id,roommates) VALUES (17,'eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut');
@@ -172,6 +176,7 @@ CREATE TABLE ResidentInterests(
                                   PRIMARY KEY (student_id, interests),
                                   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
                                   ON DELETE CASCADE
+                                  ON UPDATE CASCADE
 );
 INSERT INTO ResidentInterests(student_id,interests) VALUES (7,'Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum.');
 INSERT INTO ResidentInterests(student_id,interests) VALUES (16,'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum.');
@@ -201,6 +206,7 @@ CREATE TABLE ResidentMajor(
                               PRIMARY KEY (student_id, major),
                               FOREIGN KEY (student_id) REFERENCES Residents (student_id)
                               ON DELETE CASCADE
+                              ON UPDATE CASCADE
 );
 INSERT INTO ResidentMajor(student_id,major) VALUES (20,'at');
 INSERT INTO ResidentMajor(student_id,major) VALUES (6,'in');
@@ -229,6 +235,7 @@ CREATE TABLE CalendarParticipants(
                                      PRIMARY KEY (student_id, participants),
                                      FOREIGN KEY (student_id) REFERENCES Residents (student_id)
                                      ON DELETE CASCADE
+                                     ON UPDATE CASCADE
 );
 INSERT INTO CalendarParticipants(student_id,participants) VALUES (9,'Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.');
 INSERT INTO CalendarParticipants(student_id,participants) VALUES (5,'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.');
@@ -259,6 +266,7 @@ CREATE TABLE SpotifyPlaylist(
     ,song       VARCHAR(20) NOT NULL,
     FOREIGN KEY (student_id) REFERENCES Residents (student_id)
     ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (8,'Reade Yesinov','montes','Crime|Mystery|Thriller','erat');
 INSERT INTO SpotifyPlaylist(student_id,artist,album,genre,song) VALUES (13,'Sean Masedon','justo','Drama','in');
@@ -290,6 +298,7 @@ CREATE TABLE GroceryList(
     ,student_id  INTEGER  NOT NULL,
                             FOREIGN KEY (student_id) REFERENCES Residents(student_id)
                             ON DELETE CASCADE
+                            ON UPDATE CASCADE
 );
 INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Lyda',43,97,'2/3/2023','vel',7);
 INSERT INTO GroceryList(name,cost,budget,date_bought,item,student_id) VALUES ('Stafford',33,76,'12/24/2022','vestibulum',8);
@@ -320,6 +329,7 @@ CREATE TABLE ResidentMinor(
                               PRIMARY KEY (student_id, minor),
                               FOREIGN KEY (student_id) REFERENCES Residents (student_id)
                               ON DELETE CASCADE
+                              ON UPDATE CASCADE
 );
 INSERT INTO ResidentMinor(student_id,minor) VALUES (16,'arcu sed augue aliquam erat');
 INSERT INTO ResidentMinor(student_id,minor) VALUES (18,'varius integer');
@@ -346,9 +356,11 @@ CREATE TABLE Attend(
     student_id INTEGER  NOT NULL
     ,event_id   INTEGER  NOT NULL,
                        PRIMARY KEY (student_id, event_id),
-                       FOREIGN KEY (student_id) REFERENCES Residents (student_id) ON DELETE CASCADE,
+                       FOREIGN KEY (student_id) REFERENCES Residents (student_id) ON DELETE CASCADE
+                       ON UPDATE CASCADE,
                        FOREIGN KEY (event_id) REFERENCES Events (event_id)
                        ON DELETE CASCADE
+                       ON UPDATE CASCADE
 );
 INSERT INTO Attend(student_id,event_id) VALUES (1,13);
 INSERT INTO Attend(student_id,event_id) VALUES (2,6);
@@ -408,6 +420,7 @@ CREATE TABLE Chores(
     ,student_id   INTEGER  NOT NULL,
     FOREIGN KEY (student_id) REFERENCES Residents (student_id)
     ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('elementum ligula vehicula consequat morbi a','4/12/2023','3/5/2023',17);
 INSERT INTO Chores(name,deadline,day_assigned,student_id) VALUES ('pellentesque at nulla suspendisse potenti cras','4/11/2023','10/29/2022',16);
@@ -436,6 +449,7 @@ CREATE TABLE EventParticipants(
                                   PRIMARY KEY (event_id, participants),
                                   FOREIGN KEY (event_id) REFERENCES Events (event_id)
                                   ON DELETE CASCADE
+                                  ON UPDATE CASCADE
 );
 INSERT INTO EventParticipants(event_id,participants) VALUES (19,'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.');
 INSERT INTO EventParticipants(event_id,participants) VALUES (9,'Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo.');
@@ -465,6 +479,7 @@ CREATE TABLE ResidentsRA(
                             PRIMARY KEY (student_id),
                             FOREIGN KEY (student_id) REFERENCES Residents (student_id)
                             ON DELETE CASCADE
+                            ON UPDATE CASCADE
 );
 INSERT INTO ResidentsRA(ra_id,student_id) VALUES (1,1);
 INSERT INTO ResidentsRA(ra_id,student_id) VALUES (2,2);
@@ -498,6 +513,7 @@ CREATE TABLE RoommateConflict(
                                  PRIMARY KEY (student_id),
                                  FOREIGN KEY (rd_id) REFERENCES ResidentDirector (rd_id)
                                  ON DELETE CASCADE
+                                 ON UPDATE CASCADE
 );
 INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('opetrovsky0@behance.net','Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.',1,1,18,1);
 INSERT INTO RoommateConflict(email,description,floor_number,building_number,rd_id,student_id) VALUES ('ncommander1@rakuten.co.jp','Nulla tellus. In sagittis dui vel nisl.',2,2,9,2);

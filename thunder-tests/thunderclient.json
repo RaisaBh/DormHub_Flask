@@ -178,11 +178,27 @@
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
     "name": "Route 4: update new ra for a resident",
-    "url": "",
-    "method": "GET",
+    "url": "localhost:8001/rd/Residents/1/1",
+    "method": "PUT",
     "sortNum": 80000,
     "created": "2023-04-17T01:53:27.099Z",
-    "modified": "2023-04-17T01:53:27.099Z",
-    "headers": []
+    "modified": "2023-04-17T01:54:36.957Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "3e93a558-9bda-450e-b2f9-c67a2fa8ca25",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 3: update start time",
+    "url": "localhost:8001/rdWeeklySchedule/1/1:35",
+    "method": "PUT",
+    "sortNum": 90000,
+    "created": "2023-04-17T01:57:06.712Z",
+    "modified": "2023-04-17T01:57:25.041Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
