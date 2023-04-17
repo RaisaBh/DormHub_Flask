@@ -190,21 +190,21 @@
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
     "name": "Route 4: update new ra for a resident",
-    "url": "localhost:8001/rd/Residents/?student_id=1&ra_id=1",
+    "url": "localhost:8001/rd/Residents/?student_id=3&ra_id=4",
     "method": "PUT",
     "sortNum": 80000,
     "created": "2023-04-17T01:53:27.099Z",
-    "modified": "2023-04-17T03:24:55.076Z",
+    "modified": "2023-04-17T03:28:06.941Z",
     "headers": [],
     "params": [
       {
         "name": "student_id",
-        "value": "1",
+        "value": "3",
         "isPath": false
       },
       {
         "name": "ra_id",
-        "value": "1",
+        "value": "4",
         "isPath": false
       }
     ],
@@ -215,13 +215,24 @@
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
     "name": "Route 3: update start time",
-    "url": "localhost:8001/rdWeeklySchedule/1/1:35",
+    "url": "localhost:8001/rd/WeeklySchedule/?ra_id=7&start_time='4:00'",
     "method": "PUT",
     "sortNum": 90000,
     "created": "2023-04-17T01:57:06.712Z",
-    "modified": "2023-04-17T01:57:25.041Z",
+    "modified": "2023-04-17T03:33:21.808Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "ra_id",
+        "value": "7",
+        "isPath": false
+      },
+      {
+        "name": "start_time",
+        "value": "'4:00'",
+        "isPath": false
+      }
+    ],
     "tests": []
   },
   {
@@ -367,16 +378,16 @@
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
     "name": "Route 5.2: delete RA from weekly schedule",
-    "url": "localhost:8001/rd/WeeklySchedule/delete?ra_id=6",
+    "url": "localhost:8001/rd/WeeklySchedule/delete?ra_id=7",
     "method": "DELETE",
     "sortNum": 70000,
     "created": "2023-04-17T02:44:17.789Z",
-    "modified": "2023-04-17T03:25:45.967Z",
+    "modified": "2023-04-17T03:35:50.557Z",
     "headers": [],
     "params": [
       {
         "name": "ra_id",
-        "value": "6",
+        "value": "7",
         "isPath": false
       }
     ],
@@ -501,6 +512,31 @@
       "raw": "{\n  \"location\": \"Curry Center\"\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "47f0d840-f884-4c44-82eb-351527354107",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 3.2: update start time",
+    "url": "localhost:8001/rd/WeeklySchedule/?ra_id=3&start_time='4:55'",
+    "method": "PUT",
+    "sortNum": 100000,
+    "created": "2023-04-17T03:26:35.668Z",
+    "modified": "2023-04-17T03:27:44.680Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "ra_id",
+        "value": "3",
+        "isPath": false
+      },
+      {
+        "name": "start_time",
+        "value": "'4:55'",
+        "isPath": false
+      }
+    ],
     "tests": []
   }
 ]
