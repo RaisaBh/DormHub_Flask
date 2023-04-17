@@ -130,5 +130,59 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "99590aab-d92b-4168-b826-592962e65e87",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 7: Get start time from weekly schedulke",
+    "url": "localhost:8001/rd/getStartTimes",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-04-17T01:32:07.777Z",
+    "modified": "2023-04-17T01:32:28.222Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "7f4d0b67-b3a2-4024-8aea-b1270624abe3",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 6: delete student",
+    "url": "localhost:8001/rd/Residents/1",
+    "method": "DELETE",
+    "sortNum": 40000,
+    "created": "2023-04-17T01:34:17.105Z",
+    "modified": "2023-04-17T01:34:47.068Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "9fdd8134-d382-4432-b123-8eb4444f32b7",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 5: delete RA from weekly schedule",
+    "url": "localhost:8001/rd/WeeklySchedule/1",
+    "method": "DELETE",
+    "sortNum": 60000,
+    "created": "2023-04-17T01:51:45.706Z",
+    "modified": "2023-04-17T01:52:21.600Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "7ab708c2-4e53-404f-80b3-b4f5d9d5ee95",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 4: update new ra for a resident",
+    "url": "",
+    "method": "GET",
+    "sortNum": 80000,
+    "created": "2023-04-17T01:53:27.099Z",
+    "modified": "2023-04-17T01:53:27.099Z",
+    "headers": []
   }
 ]
