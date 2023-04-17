@@ -414,5 +414,71 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "276066db-da84-48df-8649-79dbcf91a39d",
+    "colId": "a8c9a20f-4084-40fe-87f9-a23a651307a1",
+    "containerId": "",
+    "name": "Route1-1st test",
+    "url": "localhost:8001/r/addNewInterest",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2023-04-17T03:06:07.612Z",
+    "modified": "2023-04-17T03:06:39.527Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"student_id\": 12,\n  \"interests\": \"camping\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "f911b150-99ac-471b-b3e7-e434508b9328",
+    "colId": "a8c9a20f-4084-40fe-87f9-a23a651307a1",
+    "containerId": "",
+    "name": "Route1-2nd test",
+    "url": "",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2023-04-17T03:06:54.688Z",
+    "modified": "2023-04-17T03:06:54.688Z",
+    "headers": []
+  },
+  {
+    "_id": "776ed5b4-cfd1-483c-9426-c75773b3a23e",
+    "colId": "a8c9a20f-4084-40fe-87f9-a23a651307a1",
+    "containerId": "",
+    "name": "put",
+    "url": "localhost:8001/r/Calendar/update?student_id=6&date='10/26/2022'&event='Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.'",
+    "method": "PUT",
+    "sortNum": 60000,
+    "created": "2023-04-17T03:14:36.003Z",
+    "modified": "2023-04-17T03:17:46.875Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "student_id",
+        "value": "6",
+        "isPath": false
+      },
+      {
+        "name": "date",
+        "value": "'10/26/2022'",
+        "isPath": false
+      },
+      {
+        "name": "event",
+        "value": "'Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.'",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"location\": \"Curry Center\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
