@@ -305,5 +305,30 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "5577919b-a635-4820-9e06-ea1af9a405d0",
+    "colId": "007ed817-a862-4f86-9426-c90712eaaea1",
+    "containerId": "",
+    "name": "delete_song_faucibus_by_troy_fairbank",
+    "url": "localhost:8001/r/SpotifyPlaylist/delete?artist='Troy Fairbank'&song='faucibus'",
+    "method": "DELETE",
+    "sortNum": 90000,
+    "created": "2023-04-17T02:37:34.647Z",
+    "modified": "2023-04-17T02:38:20.872Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "artist",
+        "value": "'Troy Fairbank'",
+        "isPath": false
+      },
+      {
+        "name": "song",
+        "value": "'faucibus'",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
