@@ -113,23 +113,34 @@ def get_songs(student_id):
     return the_response
 
 # Route5-Delete: delete the given event that takes place on the given date for the given student
-@residents.route('/Calendar/<student_id>/<date>/location', methods=['DELETE'])
-def delete_event(student_id, date, location):
-    # access json data from requested object
-    current_app.logger.info('Update the info')
-    req_data = request.get_json()
-    current_app.logger.info(req_data)
+@residents.route('/Calendar/delete', methods=['DELETE'])
+def delete_event():
+    current_app.logger.info('delete data')
+    student_id = request.args.get('student_id')
+    date = request.args.get('date')
+    location = request.args.get('location')
+    current_app.logger.info(student_id)
+    current_app.logger.info(date)
+    current_app.logger.info(location)
     cursor = db.get_db().cursor()
 
-    query = '''
-        DELETE FROM Calendar
-        WHERE student_id = {0} and date = {1} and location = {2}
-    '''.format(student_id, date, location)
+    query = 'DELETE FROM Calendar WHERE student_id = ' + str(student_id) + 'AND date = ' + date + 'AND location = ' + location
 
     current_app.logger.info(query)
+    db.get_db().commit()
 
-    # execute the query
-    cursor.execute(query)
+    return 'Success'
+
+@residents.route('/SpotifyPlaylist/delete', methods=['DELETE'])
+def delete_song():
+    current_app.logger.info('Processing form data')
+    song = request.args.get('song')
+    artist = request.args.get('artist')
+    current_app.logger.info(song)
+    current_app.logger.info(artist)
+
+    cursor = db.get_db().cursor()
+    cursor.execute('DELETE FROM SpotifyPlaylist where artist = ' + artist + 'AND song = ' + song)
     db.get_db().commit()
 
     return 'Success'
