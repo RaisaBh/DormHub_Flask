@@ -150,13 +150,19 @@
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
     "name": "Route 6: delete student",
-    "url": "localhost:8001/rd/Residents/1",
+    "url": "localhost:8001/rd/Residents/delete?student_id=1",
     "method": "DELETE",
     "sortNum": 40000,
     "created": "2023-04-17T01:34:17.105Z",
-    "modified": "2023-04-17T01:34:47.068Z",
+    "modified": "2023-04-17T02:42:33.309Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "student_id",
+        "value": "1",
+        "isPath": false
+      }
+    ],
     "tests": []
   },
   {
@@ -164,13 +170,19 @@
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
     "name": "Route 5: delete RA from weekly schedule",
-    "url": "localhost:8001/rd/WeeklySchedule/1",
+    "url": "localhost:8001/rd/WeeklySchedule/delete?ra_id=1",
     "method": "DELETE",
     "sortNum": 60000,
     "created": "2023-04-17T01:51:45.706Z",
-    "modified": "2023-04-17T01:52:21.600Z",
+    "modified": "2023-04-17T02:42:17.991Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "ra_id",
+        "value": "1",
+        "isPath": false
+      }
+    ],
     "tests": []
   },
   {

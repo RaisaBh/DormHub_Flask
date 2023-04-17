@@ -170,11 +170,9 @@ def update_ra(student_id, ra_id):
 @resident_director.route('/WeeklySchedule/<ra_id>', methods=['DELETE'])
 def delete_ra(ra_id):
     cursor = db.get_db().cursor()
-    query = '''
-        DELETE FROM WeeklySchedule
-        WHERE ra_id = {0}
-    '''.format(ra_id)
-    cursor.execute(query)
+    ra_id = request.args.get('ra_id')
+
+    cursor.execute('DELETE FROM WeeklySchedule where ra_id = ' + ra_id)
 
     db.get_db().commit()
 
@@ -184,11 +182,10 @@ def delete_ra(ra_id):
 @resident_director.route('/Residents/<student_id>', methods=['DELETE'])
 def delete_student(student_id):
     cursor = db.get_db().cursor()
-    query = '''
-        DELETE FROM Residents
-        WHERE student_id = {0}
-    '''.format(student_id)
-    cursor.execute(query)
+
+    student_id = request.args.get('student_id')
+
+    cursor.execute('DELETE FROM Residents where student_id = ' + student_id)
 
     db.get_db().commit()
 
