@@ -136,15 +136,17 @@ def get_most_pop_products():
 
 
 # Update the start time for an RD
-@resident_director.route('/WeeklySchedule/<ra_id>/<start_time>', methods=['PUT'])
-def update_start_time(ra_id, start_time):
+@resident_director.route('/WeeklySchedule/', methods=['PUT'])
+def update_start_time():
     cursor = db.get_db().cursor()
-    # {0}'.format(userID)
+
+    ra_id = request.args.get('ra_id')
+    start_time = request.args.get('start_time')
+
+
     query = '''
         UPDATE WeeklySchedule
-        SET start_time = {0}
-        WHERE ra_id = {0}
-    '''.format(ra_id, start_time)
+        SET start_time = ''' +  start_time + ''' WHERE ra_id = ''' + ra_id
     cursor.execute(query)
 
     db.get_db().commit()
@@ -152,14 +154,17 @@ def update_start_time(ra_id, start_time):
     return 'Success'
 
 #updates the ra for a given student
-@resident_director.route('/Residents/<student_id>/<ra_id>', methods=['PUT'])
-def update_ra(student_id, ra_id):
+@resident_director.route('/Residents/', methods=['PUT'])
+def update_ra():
     cursor = db.get_db().cursor()
+
+    student_id = request.args.get('student_id')
+    ra_id = request.args.get('ra_id')
+
+
     query = '''
         UPDATE Residents
-        SET ra_id = {0}
-        WHERE student_id = {0}
-    '''.format(ra_id, student_id)
+        SET ra_id = ''' +  ra_id + ''' WHERE student_id = ''' + student_id
     cursor.execute(query)
 
     db.get_db().commit()
@@ -172,7 +177,7 @@ def delete_ra(ra_id):
     cursor = db.get_db().cursor()
     ra_id = request.args.get('ra_id')
 
-    cursor.execute('DELETE FROM WeeklySchedule where ra_id = ' + ra_id)
+    cursor.execute('DELETE FROM WeeklySchedule WHERE ra_id = ' + ra_id)
 
     db.get_db().commit()
 
