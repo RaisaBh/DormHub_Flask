@@ -330,5 +330,45 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "2e8391fb-e1bb-40a6-ba00-ae5512557e51",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 6.2: delete student Copy",
+    "url": "localhost:8001/rd/Residents/delete?student_id=2",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2023-04-17T02:43:54.021Z",
+    "modified": "2023-04-17T02:44:12.899Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "student_id",
+        "value": "2",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "592de434-a686-455f-8a8f-15e1e3a1d3c6",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 5.2: delete RA from weekly schedule",
+    "url": "localhost:8001/rd/WeeklySchedule/delete?ra_id=2",
+    "method": "DELETE",
+    "sortNum": 70000,
+    "created": "2023-04-17T02:44:17.789Z",
+    "modified": "2023-04-17T02:44:37.572Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "ra_id",
+        "value": "2",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
