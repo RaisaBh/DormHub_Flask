@@ -648,5 +648,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "157462ea-75fc-4062-a986-a5fa77819659",
+    "colId": "a8c9a20f-4084-40fe-87f9-a23a651307a1",
+    "containerId": "",
+    "name": "Route10.1: get_all_songs",
+    "url": "localhost:8001/r/all_spotifyPlaylist",
+    "method": "GET",
+    "sortNum": 150000,
+    "created": "2023-04-18T17:12:46.307Z",
+    "modified": "2023-04-18T17:13:51.055Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
