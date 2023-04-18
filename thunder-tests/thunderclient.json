@@ -197,7 +197,7 @@
     "_id": "5da949f2-4032-4a1e-94f7-7f4e9701f345",
     "colId": "007ed817-a862-4f86-9426-c90712eaaea1",
     "containerId": "",
-    "name": "Route7.1: get_all_songs_by_kelsey_kingsbury",
+    "name": "Route8.1: get_all_songs_by_kelsey_kingsbury",
     "url": "localhost:8001/r/SpotifyPlaylist/artist?artist='Kelsey Kingsbury'",
     "method": "GET",
     "sortNum": 10000,
@@ -217,7 +217,7 @@
     "_id": "c6f4c4de-215c-49c6-a536-93c07309fb13",
     "colId": "007ed817-a862-4f86-9426-c90712eaaea1",
     "containerId": "",
-    "name": "Route7.2: get_all_songs_by_reade_yesinov",
+    "name": "Route8.2: get_all_songs_by_reade_yesinov",
     "url": "localhost:8001/r/SpotifyPlaylist/artist?artist='Reade Yesinov'",
     "method": "GET",
     "sortNum": 30000,
@@ -237,12 +237,12 @@
     "_id": "4e7dc694-a394-44b1-8cf1-8a40659aad33",
     "colId": "007ed817-a862-4f86-9426-c90712eaaea1",
     "containerId": "",
-    "name": "Route8.1: get_all_interests_for_student3",
+    "name": "Route7.1: get_all_interests_for_student3",
     "url": "localhost:8001/r/resident_interests/3",
     "method": "GET",
-    "sortNum": 40000,
+    "sortNum": 8750,
     "created": "2023-04-17T02:23:26.111Z",
-    "modified": "2023-04-17T02:23:53.057Z",
+    "modified": "2023-04-18T16:03:45.251Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -251,12 +251,12 @@
     "_id": "a08390ca-bd79-4949-a1e9-8c455bbbc55b",
     "colId": "007ed817-a862-4f86-9426-c90712eaaea1",
     "containerId": "",
-    "name": "Route8.2: get_all_interests_for_student16",
+    "name": "Route7.2: get_all_interests_for_student16",
     "url": "localhost:8001/r/resident_interests/16",
     "method": "GET",
-    "sortNum": 50000,
+    "sortNum": 9375,
     "created": "2023-04-17T02:24:05.059Z",
-    "modified": "2023-04-17T02:24:12.650Z",
+    "modified": "2023-04-18T16:03:47.201Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -633,6 +633,20 @@
         "isPath": false
       }
     ],
+    "tests": []
+  },
+  {
+    "_id": "c0652eb3-66ac-483c-8257-ee821b5a9933",
+    "colId": "a8c9a20f-4084-40fe-87f9-a23a651307a1",
+    "containerId": "",
+    "name": "Route9.1: get_all_interests",
+    "url": "localhost:8001/r/resident_all_interests",
+    "method": "GET",
+    "sortNum": 140000,
+    "created": "2023-04-18T16:04:13.810Z",
+    "modified": "2023-04-18T16:06:54.012Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
