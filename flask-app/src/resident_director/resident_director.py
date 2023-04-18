@@ -2,14 +2,15 @@ from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
-# Route 1(check): /WeeklySchedule → Post
-# Route 2(check): /Residents → Post
-# Route 3(check): /WeeklySchedule/{ra_id}/{start_time} → Put
-# Route 4(check): /Residents/{student_id}/{ra_id} → Put
-# Route 5: /WeeklySchedule/{ra_id} → Delete
-# Route 6: /Residents/{student_id} → Delete
-# Route 7(check): /WeeklySchedule/{start_time} → Get
-# Route 8(check): /Residents/{year} → Get
+# Resident Director Blueprints
+    # Route 1(check): /WeeklySchedule → Post
+    # Route 2(check): /Residents → Post
+    # Route 3(check): /WeeklySchedule/{ra_id}/{start_time} → Put
+    # Route 4(check): /Residents/{student_id}/{ra_id} → Put
+    # Route 5: /WeeklySchedule/{ra_id} → Delete
+    # Route 6: /Residents/{student_id} → Delete
+    # Route 7(check): /WeeklySchedule//getStartTimes → Get
+    # Route 8(check): /getResidentYears → Get
 
 resident_director = Blueprint('resident_director', __name__)
 # Adds a new shift to the weekly schedule 

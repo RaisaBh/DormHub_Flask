@@ -13,6 +13,8 @@ residents = Blueprint('residents', __name__)
     # Route 6(check): /ResidentMajor/{student_id} → Delete
     # Route 7(check): /ResidentInterests/{student_id} → Get
     # Route 8(check): /SpotifyPlaylist/{artist} → Get
+    # Route 9(check): /resident_all_interests → Get
+    # Route 10(check): all_spotifyPlaylist → Get
 
 # Route1-Post: Add a new interest for the given student
 @residents.route('/addNewInterest', methods=['POST'])
