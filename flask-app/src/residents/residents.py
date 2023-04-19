@@ -147,7 +147,7 @@ def delete_song():
     current_app.logger.info(artist)
 
     cursor = db.get_db().cursor()
-    cursor.execute('DELETE FROM SpotifyPlaylist where artist = ' + artist + 'AND song = ' + song)
+    cursor.execute('DELETE FROM SpotifyPlaylist where artist = ' + artist + ' AND song = ' + song)
     db.get_db().commit()
 
     return 'Success'
