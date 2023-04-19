@@ -159,6 +159,26 @@ def get_start_times():
     the_response.mimetype = 'application/json'
     return the_response
 
+#Get all the start times for a resident director 
+@resident_director.route('/getStudents/<event_id>', methods=['GET'])
+def get_students(event_id):
+    
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+
+    # use cursor to query the database for a list of products
+    cursor.execute('SELECT * FROM Attend WHERE event_id = ' + str(event_id))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
 # Get all the years for Residents
 @resident_director.route('/getResidentYears', methods=['GET'])
 def get_resident_years():

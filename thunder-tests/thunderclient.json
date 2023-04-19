@@ -590,9 +590,9 @@
     "name": "Route 5.1: Delete Event",
     "url": "localhost:8001/rd/Attend/delete?event_id=7&student_id=13",
     "method": "DELETE",
-    "sortNum": 89375,
+    "sortNum": 63750,
     "created": "2023-04-19T04:03:38.452Z",
-    "modified": "2023-04-19T04:11:26.320Z",
+    "modified": "2023-04-19T04:18:08.853Z",
     "headers": [],
     "params": [
       {
@@ -615,9 +615,9 @@
     "name": "Route 5.2: Delete Event ",
     "url": "localhost:8001/rd/Attend/delete?event_id=2&student_id=15",
     "method": "DELETE",
-    "sortNum": 99375,
+    "sortNum": 71250,
     "created": "2023-04-19T04:10:33.934Z",
-    "modified": "2023-04-19T04:10:33.934Z",
+    "modified": "2023-04-19T04:18:14.426Z",
     "headers": [],
     "params": [
       {
@@ -631,6 +631,34 @@
         "isPath": false
       }
     ],
+    "tests": []
+  },
+  {
+    "_id": "2d10af2a-2743-4d92-b71d-d1d0d208cdac",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 6.1: Get attendants",
+    "url": "localhost:8001/rd/getStudents/2",
+    "method": "GET",
+    "sortNum": 75000,
+    "created": "2023-04-19T04:16:28.926Z",
+    "modified": "2023-04-19T04:18:18.239Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "0101a947-3c52-42aa-8e18-e3fb7252fcde",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 6.2: Get attendants ",
+    "url": "localhost:8001/rd/getStudents/4",
+    "method": "GET",
+    "sortNum": 76875,
+    "created": "2023-04-19T04:17:30.595Z",
+    "modified": "2023-04-19T04:18:24.942Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
