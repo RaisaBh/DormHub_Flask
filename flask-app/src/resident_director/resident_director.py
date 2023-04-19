@@ -7,8 +7,8 @@ from src import db
     # Route 2(check): /Residents → Post
     # Route 3(check): /WeeklySchedule/{ra_id}/{start_time} → Put
     # Route 4(check): /Residents/{student_id}/{ra_id} → Put
-    # Route 5: /WeeklySchedule/{ra_id} → Delete
-    # Route 6: /Residents/{student_id} → Delete
+    # Route 5(check): /Attend/delete → Delete
+    # Route 6(check): /getStudents/<event_id> → Get
     # Route 7(check): /WeeklySchedule//getStartTimes → Get
     # Route 8(check): /getResidentYears → Get
 
@@ -159,7 +159,7 @@ def get_start_times():
     the_response.mimetype = 'application/json'
     return the_response
 
-#Get all the start times for a resident director 
+#Get all the student that attend this event
 @resident_director.route('/getStudents/<event_id>', methods=['GET'])
 def get_students(event_id):
     
