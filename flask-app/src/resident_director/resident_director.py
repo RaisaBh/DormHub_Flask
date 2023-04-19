@@ -158,7 +158,7 @@ def get_start_times():
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('SELECT start_time FROM WeeklySchedule')
+    cursor.execute('SELECT ra_id, start_time FROM WeeklySchedule')
 
     row_headers = [x[0] for x in cursor.description]
     json_data = []
@@ -177,7 +177,7 @@ def get_resident_years():
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('SELECT year FROM Residents')
+    cursor.execute('SELECT student_id, ra_id, year FROM Residents')
 
     row_headers = [x[0] for x in cursor.description]
     json_data = []
