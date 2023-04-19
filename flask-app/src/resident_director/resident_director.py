@@ -138,8 +138,8 @@ def delete_ra(ra_id):
     return 'Success'
 
 #deletes the a student from the residents (they might move out for ex.)
-@resident_director.route('/Residents/<student_id>', methods=['DELETE'])
-def delete_student(student_id):
+@resident_director.route('/Residents/delete', methods=['DELETE'])
+def delete_student():
     cursor = db.get_db().cursor()
 
     student_id = request.args.get('student_id')
