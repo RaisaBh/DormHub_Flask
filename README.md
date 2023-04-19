@@ -1,20 +1,7 @@
-# CS3200 DormHub Project
-
-## This repo contains a boilerplate setup for spinning up 3 Docker containers: 
-1. A MySQL 8 container for obvious reasons
-1. A Python Flask container to implement a REST API
-1. A Local AppSmith Server
-
-## Setup and start the containers
-1. Clone this repository.  
-2. Create a file named `db_root_password.txt` in the `secrets/` folder and put inside of it the root password for MySQL. 
-3. Create a file named `db_password.txt` in the `secrets/` folder and put inside of it the password you want to use for the a non-root user named webapp. 
-4. In a terminal or command prompt, navigate to the folder with the `docker-compose.yml` file.  
-5. Build the images with `docker compose build`
-6. Start the containers with `docker compose up`.  To run in detached mode, run `docker compose up -d`. 
+# DormHub
+Dormhub is a space for roommates to organize their data. Roommates can have trouble with organizing chores so we are providing a space for them to complete chores, make calendar events, pay any money owed if one of them went grocery shopping, or access fun enhancement like a joined spotify playlist. We would also have resident assistants or resident directors be able to navigate this hub in order to help the roommates with any conflicts they may have, or just to oversee the students if needed in addition to advertising events and such. Residents can use this app not only to get to know their roommate, but also a useful app for RA and RD to organize their schedule.
 
 ## User Personas
-
 ### Resident Blueprint
 1. /ResidentInterests → Post
 2. /SpotifyPlaylist → Post
