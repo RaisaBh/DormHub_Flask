@@ -104,46 +104,6 @@
     "tests": []
   },
   {
-    "_id": "7f4d0b67-b3a2-4024-8aea-b1270624abe3",
-    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
-    "containerId": "",
-    "name": "Route 6.1: delete student",
-    "url": "localhost:8001/rd/Residents/delete?student_id=1",
-    "method": "DELETE",
-    "sortNum": 75000,
-    "created": "2023-04-17T01:34:17.105Z",
-    "modified": "2023-04-17T04:03:40.299Z",
-    "headers": [],
-    "params": [
-      {
-        "name": "student_id",
-        "value": "1",
-        "isPath": false
-      }
-    ],
-    "tests": []
-  },
-  {
-    "_id": "9fdd8134-d382-4432-b123-8eb4444f32b7",
-    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
-    "containerId": "",
-    "name": "Route 5.1: delete RA from weekly schedule",
-    "url": "localhost:8001/rd/WeeklySchedule/delete?ra_id=1",
-    "method": "DELETE",
-    "sortNum": 60000,
-    "created": "2023-04-17T01:51:45.706Z",
-    "modified": "2023-04-17T02:42:17.991Z",
-    "headers": [],
-    "params": [
-      {
-        "name": "ra_id",
-        "value": "1",
-        "isPath": false
-      }
-    ],
-    "tests": []
-  },
-  {
     "_id": "7ab708c2-4e53-404f-80b3-b4f5d9d5ee95",
     "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
     "containerId": "",
@@ -306,46 +266,6 @@
       {
         "name": "song",
         "value": "'faucibus'",
-        "isPath": false
-      }
-    ],
-    "tests": []
-  },
-  {
-    "_id": "2e8391fb-e1bb-40a6-ba00-ae5512557e51",
-    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
-    "containerId": "",
-    "name": "Route 6.2: delete student Copy",
-    "url": "localhost:8001/rd/Residents/delete?student_id=3",
-    "method": "DELETE",
-    "sortNum": 77500,
-    "created": "2023-04-17T02:43:54.021Z",
-    "modified": "2023-04-19T03:04:44.335Z",
-    "headers": [],
-    "params": [
-      {
-        "name": "student_id",
-        "value": "3",
-        "isPath": false
-      }
-    ],
-    "tests": []
-  },
-  {
-    "_id": "592de434-a686-455f-8a8f-15e1e3a1d3c6",
-    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
-    "containerId": "",
-    "name": "Route 5.2: delete RA from weekly schedule",
-    "url": "localhost:8001/rd/WeeklySchedule/delete?ra_id=2",
-    "method": "DELETE",
-    "sortNum": 70000,
-    "created": "2023-04-17T02:44:17.789Z",
-    "modified": "2023-04-17T02:44:37.572Z",
-    "headers": [],
-    "params": [
-      {
-        "name": "ra_id",
-        "value": "2",
         "isPath": false
       }
     ],
@@ -661,6 +581,56 @@
     "modified": "2023-04-18T17:13:51.055Z",
     "headers": [],
     "params": [],
+    "tests": []
+  },
+  {
+    "_id": "739433f9-3401-4929-b3d8-e7b13860f07a",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 5.1: Delete Event",
+    "url": "localhost:8001/rd/Attend/delete?event_id=7&student_id=13",
+    "method": "DELETE",
+    "sortNum": 89375,
+    "created": "2023-04-19T04:03:38.452Z",
+    "modified": "2023-04-19T04:11:26.320Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "event_id",
+        "value": "7",
+        "isPath": false
+      },
+      {
+        "name": "student_id",
+        "value": "13",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "ba3c04d1-ab66-46ff-820e-37d55ac2a145",
+    "colId": "80e064bd-bc88-4fa4-9534-ef072c6fdd6c",
+    "containerId": "",
+    "name": "Route 5.2: Delete Event ",
+    "url": "localhost:8001/rd/Attend/delete?event_id=2&student_id=15",
+    "method": "DELETE",
+    "sortNum": 99375,
+    "created": "2023-04-19T04:10:33.934Z",
+    "modified": "2023-04-19T04:10:33.934Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "event_id",
+        "value": "2",
+        "isPath": false
+      },
+      {
+        "name": "student_id",
+        "value": "15",
+        "isPath": false
+      }
+    ],
     "tests": []
   }
 ]

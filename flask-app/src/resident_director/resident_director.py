@@ -125,26 +125,40 @@ def update_ra():
 
     return 'Success'
 
-#deletes the ra for a given weekly schedule
-@resident_director.route('/WeeklySchedule/delete', methods=['DELETE'])
-def delete_ra():
+# #deletes the ra for a given weekly schedule
+# @resident_director.route('/WeeklySchedule/deleteRA', methods=['DELETE'])
+# def delete_ra():
+#     cursor = db.get_db().cursor()
+#     ra_id = request.args.get('ra_id')
+
+#     cursor.execute('DELETE FROM WeeklySchedule WHERE ra_id = ' + ra_id)
+
+#     db.get_db().commit()
+
+#     return 'Success'
+
+# #deletes the a shift from the weekly schedule (ex. they cant show up at that time any more)
+# @resident_director.route('/WeeklySchedule/deleteShift', methods=['DELETE'])
+# def delete_student():
+#     cursor = db.get_db().cursor()
+
+#     ra_id = request.args.get('ra_id')
+
+#     cursor.execute('DELETE FROM Residents where ra_id = ' + ra_id)
+
+#     db.get_db().commit()
+
+#     return 'Success'
+
+#deletes the an event 
+@resident_director.route('/Attend/delete', methods=['DELETE'])
+def delete_event():
     cursor = db.get_db().cursor()
-    ra_id = request.args.get('ra_id')
 
-    cursor.execute('DELETE FROM WeeklySchedule WHERE ra_id = ' + ra_id)
-
-    db.get_db().commit()
-
-    return 'Success'
-
-#deletes the a shift from the weekly schedule (ex. they cant show up at that time any more)
-@resident_director.route('/WeeklySchedule/delete', methods=['DELETE'])
-def delete_student():
-    cursor = db.get_db().cursor()
-
+    event_id = request.args.get('event_id')
     student_id = request.args.get('student_id')
 
-    cursor.execute('DELETE FROM Residents where student_id = ' + student_id)
+    cursor.execute('DELETE FROM Attend where event_id = ' + str(event_id) + ' AND student_id = ' + str(student_id))
 
     db.get_db().commit()
 

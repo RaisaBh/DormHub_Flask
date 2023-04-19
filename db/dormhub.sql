@@ -142,7 +142,7 @@ INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middl
 INSERT INTO Residents(student_id,rd_id,ra_id,email,year,semester,last_name,middle_name,first_name,floor,building_number,room_number,phone_number,perm_address) VALUES (20,16,14,'rtytj@mozilla.org',2004,'lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit','Tyt','Felicity','Reinaldos',20,20,621,'177-890-7462','PO Box 31407');
 
 CREATE TABLE ResidentRoommates(
-                                  student_id INTEGER  NOT NULL
+     student_id INTEGER  NOT NULL
     ,roommates  VARCHAR(125) NOT NULL,
                                   PRIMARY KEY (student_id, roommates),
                                   FOREIGN KEY (student_id) REFERENCES Residents (student_id)
