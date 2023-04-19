@@ -13,6 +13,8 @@
 5. Build the images with `docker compose build`
 6. Start the containers with `docker compose up`.  To run in detached mode, run `docker compose up -d`. 
 
+## User Personas
+
 ### Resident Blueprint
 1. /ResidentInterests → Post
 2. /SpotifyPlaylist → Post
