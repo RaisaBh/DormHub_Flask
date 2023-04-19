@@ -126,8 +126,8 @@ def update_ra():
     return 'Success'
 
 #deletes the ra for a given weekly schedule
-@resident_director.route('/WeeklySchedule/<ra_id>', methods=['DELETE'])
-def delete_ra(ra_id):
+@resident_director.route('/WeeklySchedule/delete', methods=['DELETE'])
+def delete_ra():
     cursor = db.get_db().cursor()
     ra_id = request.args.get('ra_id')
 
@@ -137,8 +137,8 @@ def delete_ra(ra_id):
 
     return 'Success'
 
-#deletes the a student from the residents (they might move out for ex.)
-@resident_director.route('/Residents/delete', methods=['DELETE'])
+#deletes the a shift from the weekly schedule (ex. they cant show up at that time any more)
+@resident_director.route('/WeeklySchedule/delete', methods=['DELETE'])
 def delete_student():
     cursor = db.get_db().cursor()
 
